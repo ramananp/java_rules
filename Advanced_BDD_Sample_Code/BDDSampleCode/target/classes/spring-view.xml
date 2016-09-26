@@ -1,0 +1,31 @@
+<?xml  version="1.0"  encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-lazy-init="true">
+
+	
+	<bean id="aataJsViewGen" class="com.jpmorgan.pb.rest.view.JSViewGenerator">
+		<property name="versionSource" ref="staticResourceVersionSource" />
+		<property name="cssList" ref="aataCSSIncludes" />
+		<property name="scriptList" ref="aataJSIncludes" />
+		<property name="jsonSnippet" value="AI.Services.Application.init(%s);" />
+	</bean>
+
+	<bean id="viewResource" class="com.jpmchase.aata.services.rest.impl.AATAViewResourceImpl" scope="request">
+		<property name="requestContext" ref="requestContext" />
+		<!-- <property name="userInfoProvider" ref="userInfoProvider" /> -->
+		<property name="config" ref="appConfig"/>
+		<property name="aataJsViewGenerator" ref="aataJsViewGen"/>
+		<property name="aataAppContextInfo" ref="aataAppContextInfo"/>
+		<property name="sessionContextInfo" ref="sessionContextInfo"/>
+		<property name="contextLoader" ref="contextLoader"/>
+	</bean>
+	
+</beans>

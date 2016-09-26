@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Exceptions>
+		<Exception>
+				<Code>GE_EX_00</Code>
+				<Description>An Exception has been occurred</Description>
+				<Message>An Exception has been occurred during Operation, please contact system administrator</Message>
+				<Type>General Exception</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>GE_DBEX_01</Code>
+				<Description>Exception has been occurred during Database operation</Description>
+				<Message>An Exception has been occurred during Database Operation, please contact system administrator</Message>
+				<Type>Database Error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>GE_DBEX_02</Code>
+				<Description>Exception has been occurred during Database connection</Description>
+				<Message>An Exception has been occurred during Database Operation, please contact system administrator</Message>
+				<Type>Database Connect</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>	
+		<Exception>
+				<Code>GE_NFEX_03</Code>
+				<Description>Exception has been occurred to format string into integer</Description>
+				<Message>Exception has been occurred to format string into integer, please contact system administrator</Message>
+				<Type>Number Format Exception</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+</Exceptions>

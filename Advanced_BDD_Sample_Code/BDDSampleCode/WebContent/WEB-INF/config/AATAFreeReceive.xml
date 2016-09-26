@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "sql-map-2.dtd">
+<sqlMap namespace="AATAFreeReceive">
+
+<!-- Proc sp_at_saveFRRecvAsset Start -->
+  		
+  		<statement id="setSettelmentAssetDetails" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_recv_assets') IS NOT NULL DROP TABLE ##tmp_recv_assets
+	  	
+	  	CREATE TABLE ##tmp_recv_assets
+		(
+		   RECV_ASET_SEQ_NUM     INT NOT NULL,
+		   CUSIP        VARCHAR(20)  NULL,
+		   PSN_QTY_RECD      NUMERIC(28,6)  NULL,
+		   DESCRIPTION    VARCHAR(255) NULL,
+		   SETTMNT_TYPE    VARCHAR(20) NULL,
+		   SEDOL     INT NULL,
+		   IMNT_CLASS_CD VARCHAR(20) NULL,
+		   TICKER      VARCHAR(20) NULL,
+   		   ISIN_CODE    VARCHAR(50) NULL
+		   
+		)
+                
+		<iterate property="listSaveSettelmentType"> 
+	  	 INSERT INTO ##tmp_recv_assets (
+			 RECV_ASET_SEQ_NUM,
+             CUSIP,
+             PSN_QTY_RECD,
+             DESCRIPTION,
+             SETTMNT_TYPE,
+             SEDOL,
+             IMNT_CLASS_CD,
+             TICKER,
+             ISIN_CODE
+	  	 )
+		 VALUES (
+			 #listSaveSettelmentType[].iUniqueId:INTEGER#,
+			 #listSaveSettelmentType[].cusipId:VARCHAR#,
+			 #listSaveSettelmentType[].dQuantity:DOUBLE#,			 
+			 #listSaveSettelmentType[].descriptionId:VARCHAR#,
+			 #listSaveSettelmentType[].settelmentId:VARCHAR#,
+			 #listSaveSettelmentType[].iSedol:INTEGER#,
+			 #listSaveSettelmentType[].imntClssCd:VARCHAR#,
+			 #listSaveSettelmentType[].ticker:VARCHAR#,			 
+			 #listSaveSettelmentType[].isin:VARCHAR#
+		 )
+		</iterate> 
+
+	</statement>
+	<parameterMap id="saveSettlementAssetParam" class="java.util.Map">
+		<parameter property="caseId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="int" mode="OUT"/>
+		<parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="loginId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	</parameterMap>
+	<procedure id="saveRecvSettelmentAsset" parameterMap="saveSettlementAssetParam">
+		<![CDATA[
+		{call AATA..sp_at_saveFRRecvAsset(?,?,?,?)}
+		]]>
+	</procedure>
+	<update id="dropSettlementAssetDetailsTable">IF OBJECT_ID ('##tmp_recv_assets') IS NOT NULL DROP TABLE ##tmp_recv_assets</update>  
+  		
+  		<!-- Proc sp_at_saveFRRecvAsset End -->
+  		
+  		<!-- Proc sp_at_getFRRecvAsset  starts-->
+  		
+	<parameterMap id="spAATAGetSettlementAsset" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetSettlementAssetResult" class="com.jpmchase.aata.services.to.AATAFreeReceiveSettlementTypeTO">
+  		
+		<result property="uniqueId" column="RecAsetSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusipId" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="quantityId" column="Quantity" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="descriptionId" column="Description" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="settelmentId" column="SettlementType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="sedolId" column="Sedol" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="imntClssCd" column="ImntClassCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="isin" column="IsinCode" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticker" column="Ticker" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  	
+	<procedure id="getSettlementAssetDetails" parameterMap="spAATAGetSettlementAsset" resultMap="spAATAGetSettlementAssetResult" >
+  			{call AATA..sp_at_getFRRecvAsset(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getFRRecvAsset   ends-->
+	
+	<!-- START : Proc sp_delFRRecAssets  -->
+	
+	<statement id="spAATADelSettlementAssetDtls" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	 	IF OBJECT_ID ('##tmp_del_recv_asset') IS NOT NULL DROP TABLE ##tmp_del_recv_asset
+	
+	   CREATE TABLE ##tmp_del_recv_asset
+		(
+		 RECV_ASET_SEQ_NUM INT NOT NULL 
+		)
+
+		<iterate property="settlementDtlsSaveList"> 
+	  	 INSERT INTO ##tmp_del_recv_asset (
+	  	 	 RECV_ASET_SEQ_NUM
+	  	 )
+		 VALUES (
+			 #settlementDtlsSaveList[].iUniqueId:INTEGER#			 
+		 )
+		</iterate> 
+	  
+	  	execute AATA..sp_delFRRecAssets #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#
+	  
+		</statement>
+		<update id="dropDelSettlementAssetDtls">IF OBJECT_ID ('##tmp_del_recv_asset') IS NOT NULL DROP TABLE ##tmp_del_recv_asset</update>  
+	
+	
+	<!-- END : Proc sp_delFRRecAssets  -->
+
+</sqlMap>

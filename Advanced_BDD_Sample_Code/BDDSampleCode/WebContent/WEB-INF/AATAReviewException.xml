@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Exceptions>
+		<Exception>
+				<Code>AATA_GEEX_01</Code>
+				<Description>Exception has been occurred during operation</Description>
+				<Message>An Exception has been occurred during Operation, please contact system administrator</Message>
+				<Type>Holistic Review Error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>AATA_GEEX_02</Code>
+				<Description>Exception has been occurred during  operation </Description>
+				<Message>An Exception has been occurred during Operation, please contact system administrator</Message>
+				<Type>Holistic Review Error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>		
+		<Exception>
+				<Code>AATA_GEEX_03</Code>
+				<Description>Exception has been occurred during  operation, provided filter object is null</Description>
+				<Message>An Exception has been occurred during Operation, provided report filter object is null. please contact system administrator</Message>
+				<Type>Filter object null error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>	
+		<Exception>
+				<Code>AATA_GEEX_04</Code>
+				<Description>Exception has been occurred during  operation, retrieved DropDown value is null</Description>
+				<Message>An Exception has been occurred during Operation, DropDown value object is null. please contact system administrator</Message>
+				<Type>DropDown value null error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>AATA_GEEX_05</Code>
+				<Description>Exception has been occurred during  operation, retrieved DAO object is null</Description>
+				<Message>An Exception has been occurred during Operation, retrieved DAO object is null. please contact system administrator</Message>
+				<Type>DAO object null error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>AATA_GEEX_06</Code>
+				<Description>Exception has been occurred during  operation, option value does not match.</Description>
+				<Message>An Exception has been occurred during Operation, option value does not match. please contact system administrator</Message>
+				<Type>Option value not match error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>AATA_GEEX_07</Code>
+				<Description>Exception has been occurred during  operation, retrieved DTO object is null.</Description>
+				<Message>An Exception has been occurred during Operation, provided data transfer object is null. please contact system administrator</Message>
+				<Type>DTO object null error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>	
+		<Exception>
+				<Code>AATA_GEEX_08</Code>
+				<Description>Exception has been occurred during  operation, retrieved list is null.</Description>
+				<Message>An Exception has been occurred during Operation, provided data transfer object is null. please contact system administrator</Message>
+				<Type>List null error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>	
+		<Exception>
+				<Code>AATA_GEEX_09</Code>
+				<Description>Exception has been occurred during operation, data can not be parsed.</Description>
+				<Message>An Exception has been occurred during Operation, provided data can not be parsed. please contact system administrator</Message>
+				<Type>Data Parsing error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>
+		<Exception>
+				<Code>AATA_GEEX_10</Code>
+				<Description>Exception has been occurred during operation, ticket can not be created by createTicket of WorkFlowUtility</Description>
+				<Message>An Exception has been occurred during Operation, ticket can not be created by createTicket of WorkFlowUtility</Message>
+				<Type>Ticket Creation error</Type>
+				<Logging>true</Logging>
+				<Mailing>false</Mailing>				
+		</Exception>		
+</Exceptions>

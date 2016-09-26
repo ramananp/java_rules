@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:ehcache="http://www.springmodules.org/schema/ehcache"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springmodules.org/schema/ehcache http://www.springmodules.org/schema/cache/spring-ehcache-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+       http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+  		
+	<context:annotation-config/>
+	
+	 <bean id="aataAppTSGConfig" class="org.springframework.core.io.FileSystemResource">		
+			<constructor-arg>			 
+				<bean class="org.springframework.jndi.JndiObjectFactoryBean">
+					<property name="jndiName" value="properties.AATARestService" />
+					<property name="resourceRef" value="true" />
+				</bean>			
+			</constructor-arg>		
+		</bean>
+	
+		<util:properties id="aataTSGProperties" location="#{aataAppTSGConfig}" />
+
+		
+	<context:property-placeholder properties-ref="aataTSGProperties" system-properties-mode="OVERRIDE" />
+	
+	<bean id="passTSGConfigurer"
+		class="com.jpmchase.aata.services.utils.TwofiskKeyPropertyValueUtils" >
+		<constructor-arg value="${cgew.cryptoFile.location}" />
+		<constructor-arg value="${mq.javax.net.ssl.keyStorePassword}" />
+	</bean>
+	
+	<bean id="umTSGsslfactory" class="com.jpmchase.aata.services.jms.SocketFactory">
+        <constructor-arg index="0" value="${mq.javax.net.ssl.keyStore}"/>
+        <constructor-arg index="1" value="#{passConfigurer.decryptedPwd}"/>
+	</bean>
+	
+	<bean id="mqTSGFactory" class="com.ibm.mq.jms.MQConnectionFactory" lazy-init="true">
+		<property name="queueManager" value="${mq.TSGqueueManager}" />
+		<property name="hostName" value="${mq.TSGhostName}" />
+		<property name="channel" value="${mq.TSGchannel}" />
+		<property name="port" value="${mq.TSGport}" />
+		<property name="transportType" value="${mq.TSGtransportType}" />
+		<property name="SSLCipherSuite" value="${mq.TSGSSLCipherSuite}" />
+		<property name="SSLSocketFactory" value="#{umsslfactory.sslSocketFacotory}" /> 
+	</bean>
+	
+	<bean id="cachedTSGConnectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory"
+		lazy-init="true">
+		<property name="targetConnectionFactory" ref="mqTSGFactory" />
+		<property name="sessionCacheSize" value="${mq.cachedConnectionFactory.sessionCacheSize}" />
+		<property name="reconnectOnException" value="true" />
+	</bean>
+	
+	<!-- JMS transaction manager -->
+	<bean id="jmsTSGTransactionManager"
+		class="org.springframework.jms.connection.JmsTransactionManager" lazy-init="true">
+		<property name="connectionFactory" ref="cachedTSGConnectionFactory" />
+	</bean>
+
+	<bean id="queue_TSG_AATA_NA" class="com.ibm.mq.jms.MQQueue" lazy-init="true">
+		<property name="baseQueueName" value="${mq.queueName.TSG}" />
+		<property name="TargetClient"
+			value="#{ T(com.ibm.mq.jms.JMSC).MQJMS_CLIENT_JMS_COMPLIANT}" />
+	</bean>
+	
+	<bean id="jmsTemplate_TSG_AATA_NA" class="org.springframework.jms.core.JmsTemplate" lazy-init="true">
+		<property name="connectionFactory" ref="cacheTSGdConnectionFactory" />
+		<property name="defaultDestination" ref="queue_TSG_AATA_NA" />
+	</bean>
+	
+	<bean id="messageTSGConsumer" class="com.jpmchase.aata.services.jms.TSGMessageReceiver">
+	</bean>
+	
+	<bean id="consumerTSGContainer"
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="messageListener" ref="messageTSGConsumer" />
+		<property name="connectionFactory" ref="cachedTSGConnectionFactory" />
+		<property name="destination" ref="queue_TSG_AATA_NA" />
+		<property name="transactionManager" ref="jmsTSGTransactionManager" />
+		<property name="maxConcurrentConsumers" value="10" />
+		<property name="cacheLevel"
+			value="#{T(org.springframework.jms.listener.DefaultMessageListenerContainer).CACHE_NONE}" />
+	</bean>
+
+
+</beans>

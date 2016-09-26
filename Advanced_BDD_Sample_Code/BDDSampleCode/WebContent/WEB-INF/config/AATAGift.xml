@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "sql-map-2.dtd">
+<sqlMap namespace="AATAGift">
+
+<!-- Proc  sp_at_getGiftLetter starts-->
+  		
+	<parameterMap id="spGetGiftLetterParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	</parameterMap>
+  		
+	<resultMap id="spGetGiftLetterResult" class="com.jpmchase.aata.services.to.AATAGiftTO">
+
+  		<result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="childCaseId" column="ChildCaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousFlag" column="DonorAnonymousFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorSalutation" column="DonorSalutation" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress1" column="DonorAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress2" column="DonorAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress3" column="DonorAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress4" column="DonorAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress5" column="DonorAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>  		
+  		<result property="donorNote" column="DonorNote" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="signerName" column="SignerName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="signerTitle" column="SignerTitle" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="signerPhoneNo" column="SignerPhone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="doneeSalutation" column="DoneeSalutation" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress1" column="DoneeAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress2" column="DoneeAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress3" column="DoneeAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress4" column="DoneeAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress5" column="DoneeAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeNote" column="DoneeNote" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneePhoneNo" column="DoneePhone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="donorName" column="DonorName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeName" column="DoneeName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="anonymousDonorAddress1" column="AnonymousDonorAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress2" column="AnonymousDonorAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress3" column="AnonymousDonorAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress4" column="AnonymousDonorAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress5" column="AnonymousDonorAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="teamAddLine1" column="TeamAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="teamAddLine2" column="TeamAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="teamAddLine3" column="TeamAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="teamAddLine4" column="TeamAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="teamAddLine5" column="TeamAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="editGiftFlag" column="EdittedFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="giftValueDate" column="ValueDate" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="recAccNumber" column="ReceivingAccountNumber" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="recAccName" column="ReceivingAccountName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="deliveredTo" column="DeliveredTo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="dtcNumber" column="DTCNumber" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="giftOptionFlag" column="GiftType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="stmtTktFlag" column="StatementTicketFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="deliveryAccoutNumber" column="GiftAcctNumber" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		
+  		
+  		
+	</resultMap>
+  	
+	<procedure id="spGetGiftLetter" parameterMap="spGetGiftLetterParam" resultMap="spGetGiftLetterResult" >
+  			{call AATA..sp_at_getGiftLetter(?,?,?,?)}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getGiftLetter  ends-->
+	
+	<!-- Proc  sp_at_saveGiftLetter starts-->
+  		
+	<parameterMap id="spSetGiftLetterParam" class="com.jpmchase.aata.services.to.AATAGiftTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="childCaseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorSalutation" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorAddress1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorAddress2" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorAddress3" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorAddress4" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorAddress5" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorNote" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="signerName" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="signerTitle" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="signerPhoneNo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeSalutation" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeAddress1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeAddress2" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeAddress3" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeAddress4" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeAddress5" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeNote" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneePhoneNo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="donorName" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="doneeName" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousDonorAddress1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousDonorAddress2" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousDonorAddress3" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousDonorAddress4" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="anonymousDonorAddress5" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+		<parameter property="editGiftFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="spSetGiftLetter" parameterMap="spSetGiftLetterParam" >
+  			{call AATA..sp_at_saveGiftLetter( ?,?,?,?,? , ?,?,?,?,? , ?,?,?,?,? , ?,?,?,?,? , ?,?,?,?,?, ?,?,?,?,?, ? )}
+	</procedure>
+  		
+	<!-- Proc  sp_at_saveGiftLetter  ends-->
+	
+	<!-- Proc  sp_at_getGiftAddress starts-->
+  		
+	<parameterMap id="spGetGiftAddressParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	</parameterMap>
+	<resultMap id="spGetGiftAddressResult" class="com.jpmchase.aata.services.to.AATAGiftTO">
+		<result property="donorAddressId" column="AddressId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="donorAddress" column="Address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress1" column="Line1Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress2" column="Line2Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress3" column="Line3Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress4" column="Line4Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress5" column="Line5Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="donorAddress6" column="Line6Ad" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cityName" column="CityNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="stateCode" column="StateCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="stateName" column="StateNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="countryCode" column="CtryCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="countryName" column="CtryNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="postalCode" column="PostalCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="addressTypeName" column="AddrTypNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<procedure id="spGetGiftAddress" parameterMap="spGetGiftAddressParam" resultMap="spGetGiftAddressResult">
+  			{call AATA..sp_at_getGiftAddress(?,?,?,?)}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getGiftAddress  ends-->
+	
+	<!-- Proc sp_at_saveGiftAddrDtls Start -->
+  		
+  		<statement id="spSetGiftAddress" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_address') IS NOT NULL DROP TABLE ##tmp_address
+	  	
+	  	CREATE TABLE ##tmp_address
+			(
+			  LINE_1_AD		VARCHAR(40),
+			  LINE_2_AD		VARCHAR(40),
+			  LINE_3_AD		VARCHAR(40),
+			  LINE_4_AD		VARCHAR(40),
+			  LINE_5_AD		VARCHAR(40),
+			  LINE_6_AD		VARCHAR(40),
+			  LINE_7_AD		VARCHAR(40),
+			  LINE_8_AD		VARCHAR(40),
+			  CITY_NM		VARCHAR(40),
+			  STATE_NM		VARCHAR(40),
+			  CTRY_NM		VARCHAR(40),
+			  POSTAL_CD		VARCHAR(20),
+			  STE_CD		VARCHAR(2),
+			  CTRY_ISO2_CD	VARCHAR(2),
+			  ADDR_TYP_NM	VARCHAR(40)
+			)
+
+
+                
+		<iterate property="giftAddressTOList"> 
+	  	 INSERT INTO ##tmp_address (
+	  	 	 LINE_1_AD,
+	  	 	 LINE_2_AD,
+	  	 	 LINE_3_AD,
+	  	 	 LINE_4_AD,
+	  	 	 LINE_5_AD,
+	  	 	 LINE_6_AD,
+	  	 	 LINE_7_AD,
+	  	 	 LINE_8_AD,
+	  	 	 CITY_NM,
+	  	 	 STATE_NM,
+	  	 	 CTRY_NM,
+	  	 	 POSTAL_CD,
+	  	 	 STE_CD,
+	  	 	 CTRY_ISO2_CD,
+	  	 	 ADDR_TYP_NM
+	  	 )
+		 VALUES (
+		 	#giftAddressTOList[].donorAddress1:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress2:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress3:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress4:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress5:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress6:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress7:VARCHAR#,
+		 	#giftAddressTOList[].donorAddress8:VARCHAR#,
+		 	#giftAddressTOList[].cityName:VARCHAR#,
+		 	#giftAddressTOList[].stateName:VARCHAR#,
+		 	#giftAddressTOList[].countryName:VARCHAR#,
+		 	#giftAddressTOList[].postalCode:VARCHAR#,
+		 	#giftAddressTOList[].stateCode:VARCHAR#,
+		 	#giftAddressTOList[].countryCode:VARCHAR#,
+		 	#giftAddressTOList[].addressTypeName:VARCHAR#
+		 )
+		</iterate> 
+	  
+	  	 execute AATA..sp_at_saveGiftAddrDtls #caseId:VARCHAR#,#loginUid:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#
+	  	 
+	  
+	</statement>
+	<update id="dropGiftAddressTable">IF OBJECT_ID ('##tmp_address') IS NOT NULL DROP TABLE ##tmp_address</update>  
+  		
+  		<!-- Proc sp_at_saveGiftAddrDtls End -->
+
+	<!-- Proc  sp_at_getGiftTaxLot starts-->
+  		
+	<parameterMap id="spGetGiftTaxLotParam" class="java.util.HashMap">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	</parameterMap>
+	<resultMap id="spGetGiftTaxLotResult" class="com.jpmchase.aata.services.to.AATAGiftTaxLotTO">
+		<result property="caseId" column="AT_CASE_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="mvPerUnit" column="MEAN_PER_UNIT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="security" column="SECURITY" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="shares" column="SHARES" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxPurposeValues" column="VALUE_FOR_TAX_PURPOSES" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxCost" column="UNI_COST" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dAcquisitionDt" column="ACQUISITION_DATE" jdbcType="DATE" javaType="java.sql.Date"/>
+	</resultMap>
+	
+	<procedure id="spGetGiftTaxLot" parameterMap="spGetGiftTaxLotParam" resultMap="spGetGiftTaxLotResult">
+  			{call AATA..sp_at_getGiftTaxLot(?,?,?,?)}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getGiftTaxLot  ends-->
+	
+	<!-- Proc sp_at_saveGiftTaxLot  Start -->
+  		
+  		<statement id="spSetGiftTaxLotList" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	 	IF OBJECT_ID ('##tmp_gift_tax_lot') IS NOT NULL DROP TABLE ##tmp_gift_tax_lot
+	
+	   	CREATE TABLE ##tmp_gift_tax_lot
+			(
+			 MEAN_PER_UNIT    				NUMERIC(27,6) NULL,
+			 SECURITY           			VARCHAR(100) NULL,
+			 SHARES              			NUMERIC(27,6) NULL,
+			 VALUE_FOR_TAX_PURPOSES       	NUMERIC(27,6) NULL,
+			 TAX_COST          				NUMERIC(27,6) NULL,
+			 ACQUISITION_DATE          		DATETIME NOT NULL
+			)
+
+		<iterate property="giftTaxLotList"> 
+	  	 INSERT INTO ##tmp_gift_tax_lot (
+	  	 	 MEAN_PER_UNIT,
+	  	 	 SECURITY,
+	  	 	 SHARES,
+	  	 	 VALUE_FOR_TAX_PURPOSES,
+             TAX_COST,
+             ACQUISITION_DATE
+	  	 )
+		 VALUES (
+		  	 #giftTaxLotList[].dMVPerUnit:DOUBLE#,		  	 
+			 #giftTaxLotList[].security:VARCHAR#,
+			 #giftTaxLotList[].dShares:DOUBLE#,
+			 #giftTaxLotList[].dTaxPurposeValues:DOUBLE#,
+			 #giftTaxLotList[].dTaxCost:DOUBLE#,
+			 #giftTaxLotList[].dAcquisitionDt:DATE#
+		 )
+		</iterate> 
+	  
+	  	 execute AATA..sp_at_saveGiftTaxLot  #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginUid:VARCHAR#  
+	  
+		</statement>
+	
+		<update id="dropGiftTaxLotTable">IF OBJECT_ID ('##tmp_gift_tax_lot') IS NOT NULL DROP TABLE ##tmp_gift_tax_lot</update> 
+		 
+	<!-- Proc sp_at_saveGiftTaxLot  End -->
+	
+	<!-- Proc  sp_at_gift_createFnlDspstn starts-->
+  		
+	<parameterMap id="spCreateFinalDispositionParam" class="java.util.HashMap">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="newCaseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	</parameterMap>
+	
+	<procedure id="spCreateFinalDisposition" parameterMap="spCreateFinalDispositionParam" >
+  			{call AATA..sp_at_gift_createFnlDspstn( ?,?,?,?,? )}
+	</procedure>
+  		
+	<!-- Proc  sp_at_gift_createFnlDspstn  ends-->
+	
+	<!-- Proc  sp_at_getaccCovgDataExists starts-->
+	
+	<parameterMap id="spGetAccCovgDataExistsParam" class="com.jpmchase.aata.services.to.AATAClntCoverageDtlsTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="accCovFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	</parameterMap>
+	
+	<procedure id="spGetAccCovgDataExists" parameterMap="spGetAccCovgDataExistsParam" >
+  			{call AATA..sp_at_getaccCovgDataExists( ?,?,?,?,? )}
+	</procedure>
+	
+	<!-- Proc  sp_at_getaccCovgDataExists ends-->
+
+</sqlMap>

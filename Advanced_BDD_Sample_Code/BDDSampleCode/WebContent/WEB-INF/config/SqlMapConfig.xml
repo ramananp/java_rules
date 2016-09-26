@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<typeHandler
+		javaType="java.sql.Date"
+		callback="com.jpmchase.aata.services.utils.AATADateTypeHandler"/>
+		
+	<typeHandler
+		javaType="java.sql.Timestamp"
+		callback="com.jpmchase.aata.services.utils.AATATimestampTypeHandler"/>
+
+	<transactionManager type="EXTERNAL" commitRequired="true">
+		<property name="DefaultAutoCommit" value="false" />
+		<property name="SetAutoCommitAllowed" value="false" />
+		<dataSource type="JNDI">
+			<property name="DataSource" value="jdbc/AATAService" />
+		</dataSource>
+	</transactionManager>	
+
+	
+	<sqlMap resource="/WEB-INF/config/AATA.xml" />
+	<sqlMap resource="/WEB-INF/config/AATACommentsAttachment.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAWorkFlowUtility.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAFreeDelivery.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAStandard.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAStatus.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAGift.xml" />
+	<sqlMap resource="/WEB-INF/config/AATAFreeReceive.xml" />
+	<sqlMap resource="/WEB-INF/config/AATASanctionScreening.xml" />
+	<sqlMap resource="/WEB-INF/config/AATA_BDD.xml" />
+</sqlMapConfig> 

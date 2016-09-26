@@ -1,0 +1,1879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "sql-map-2.dtd">
+<sqlMap namespace="AATAFreeDelivery">
+
+	<!-- Proc-  sp_at_saveTfrDetails  starts -->
+	<parameterMap id="spAATASaveTfrDetlParam" class="com.jpmchase.aata.services.to.AATAAssetTransferDtlsTO">
+		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="selectedSettlementType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	  	<parameter property="giftFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="giftValueDt" jdbcType="DATE" javaType="java.sql.Date" mode="IN"/>
+		<parameter property="selectedTransferType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="selectedAssetSelection" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="selectedAssetTransferReason" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="iraTaxCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="fiduciaryTaxCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="giftOptionFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="genReqComFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="selectedDonationType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="ssn" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="selectedTransferBy" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="selectedRounding" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="ssnFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="genReqRecvAcctType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" /> 
+		<parameter property="ticketType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	   		 
+	</parameterMap>
+  		
+	<procedure id="spSetPartialGeneralReqInfo" parameterMap="spAATASaveTfrDetlParam" >
+  			{call AATA..sp_at_saveTfrDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+		
+	<!-- Proc-  sp_at_saveTfrDetails  ends -->
+	
+	
+	<!-- Proc-  sp_at_saveChecklist  starts -->
+	<!-- Front end Account closing does not exist in DB match -->
+	<parameterMap id="spAATASaveChkDetlParam" class="com.jpmchase.aata.services.to.AATAFullTransferChecklistTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="receiveSignedFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="informContactBrokerFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="reviewAccountFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="informSalesTradersFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="performCallbackFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="debitCardFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="achFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="standingPaymentsFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="creditFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="notPledgeFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="pledgeInvolvedFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="internalTransferFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="privateEquityFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="placeCallBackStampFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="facilateMutualFundFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	  		
+		<parameter property="accountClosingFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="accountClosingReason" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="feesWaiveFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="feesTakeFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="feesChargeFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		
+		
+		<parameter property="feesTakenDt" jdbcType="DATE" javaType="java.sql.Date" mode="IN" />
+		<parameter property="accountToChargeFees" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="feesChargeDt" jdbcType="DATE" javaType="java.sql.Date" mode="IN" />
+		
+		<parameter property="reserveCashDbl" jdbcType="Double" javaType="java.lang.Double" mode="IN" />
+		<parameter property="reviewOverdraftFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="mutualfundIntFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="mutualfundExtFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		
+		<parameter property="fiduciaryFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="residualProcessingFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="autoResidualFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	  		
+		<!--Data Type mismatch-->
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   	<parameter property="busSysCd" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	   	 
+	</parameterMap>
+  		
+	<procedure id="spSetFullGeneralReqInfo" parameterMap="spAATASaveChkDetlParam">
+  			{call AATA..sp_at_saveChecklist(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+		
+	<!-- Proc-  sp_at_saveChecklist  ends -->
+	
+	<!-- Proc  sp_at_getTfrDetails starts-->
+  		
+	<parameterMap id="spAATAGetTfrDetlParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  	
+	<resultMap id="spAATAGetTfrDetlResult" class="com.jpmchase.aata.services.to.AATAAssetTransferDtlsTO">
+
+		<result property="selectedSettlementType" column="int_ext_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="giftFlag" column="gift_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="giftValueDt" column="gift_ts" jdbcType="DATE" javaType="java.sql.Date"/>
+		<result property="selectedTransferType" column="tfr_type" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedAssetSelection" column="full_partial_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedAssetTransferReason" column="aset_tfr_rsn_cd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="iraInd" column="ira_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="fiduciaryInd" column="fiduciary_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="giftOptionFlag" column="Gift_option_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="genReqComFlag" column="LockFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="availableCashDbl" column="AvailableCash" jdbcType="Double" javaType="java.lang.Double" />
+		<result property="selectedDonationType" column="DonationType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ssn" column="SSN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedTransferBy" column="TransferBy" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedRounding" column="Rounding" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ssnFlag" column="SsnInd" jdbcType="VARCHAR" javaType="java.lang.String"/>		
+		<result property="caseFlag" column="Case_Flag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="refCaseId" column="Ref_Case_Id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="genReqRecvAcctType" column="RecvAcctType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="teamTypeCode" column="TeamType" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="sourceSystem" column="SourceSystem" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="totalMarketValFDP" column="TotalMarketValue" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticketType" column="TicketType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="showRsdlOptIndicator" column="ShowRsdlOptIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="initTicketDate" column="Ticket_init_date" jdbcType="DATETIME" javaType="java.sql.Timestamp"/>
+		<result property="crdtExcpApprFlag" column="CreditExcpApprvlFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="gwmCrdtCommFlag" column="GwmCreditCommentFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="crdtResponseFlag" column="CreditResponse" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditExcpChildTicket" column="CreditExcpChildTicket" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="derivFlag" column="DERV_FLAG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienFlag" column="LienInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dupliParentTcktFlag" column="DupPrntTktFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  		
+	<procedure id="getPartialGeneralReqInfo" parameterMap="spAATAGetTfrDetlParam" resultMap="spAATAGetTfrDetlResult" >
+  			{call AATA..sp_at_getTfrDetails(?,?,?,?)}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getTfrDetails  ends-->
+  		
+	<!-- Proc  sp_at_getChecklist starts-->
+  		
+	<parameterMap id="spAATAGetCheckParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetCheckResult" class="com.jpmchase.aata.services.to.AATAFullTransferChecklistTO">
+  		
+		<!-- result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String" /-->
+		<result property="receiveSignedFlag" column="ClntAuthRcptInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="informContactBrokerFlag" column="CntctBnkrPrdSplstInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="reviewAccountFlag" column="ReviewAcctInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="informSalesTradersFlag" column="InfrmStrdrInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="performCallbackFlag" column="CallbackInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="debitCardFlag" column="CancelDbtCrdInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="achFlag" column="AchEftsInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="standingPaymentsFlag" column="StndPymtsInstrInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditFlag" column="CreditInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="notPledgeFlag" column="CrdNoPldgInvldInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="pledgeInvolvedFlag" column="CrdPldgInvldInd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="internalTransferFlag" column="CrdPldgInvldIntrnlInd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="privateEquityFlag" column="PvtEqtyInd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="placeCallBackStampFlag" column="CallbackStampInd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="facilateMutualFundFlag" column="FcltMfSecLqdtnsInd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="reviewOverdraftFlag" column="ReviewOverDraftInd" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="mutualfundIntFlag" column="MutualFndIntrnlInd" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="mutualfundExtFlag" column="MutualFndExtrnlInd" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="fiduciaryFlag" column="FiduciaryCashInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="residualProcessingFlag" column="ResidualProcessingInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="autoResidualFlag" column="AutoResidualFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="loginUid" column="LoginId" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="accountClosingFlag" column="AccountClosingFlag" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="accountClosingReason" column="AccountClosingReason" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="feesWaiveFlag" column="FeesWaiveFlag" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="feesTakeFlag" column="FeesTakeFlag" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="feesTakenDt" column="FeesTakenDate" jdbcType="DATE" javaType="java.sql.Date" />
+		<result property="feesChargeFlag" column="FeesChargeFlag" jdbcType="VARCHAR" javaType="java.lang.String" />
+		
+		<result property="accountToChargeFees" column="AccountToChargeFees" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="feesChargeDt" column="FeesChargeDate" jdbcType="DATE" javaType="java.sql.Date"  />
+		<result property="reserveCashDbl" column="ReserveCash" jdbcType="Double" javaType="java.lang.Double" />
+		<result property="recvAsstData" column="RecvAsstData" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="busSysCd" column="BusinessSystemCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+					
+	</resultMap>
+  	
+	<procedure id="getFullGeneralReqInfo" parameterMap="spAATAGetCheckParam" resultMap="spAATAGetCheckResult" >
+  			{call AATA..sp_at_getChecklist(?,?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getChecklist  ends-->
+	
+	<!-- Proc sp_at_saveDelvAssets Start -->
+  		
+  		<statement id="setDeliveryAssetDetails" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_asst_delv') IS NOT NULL DROP TABLE ##tmp_asst_delv
+	  	
+	   CREATE TABLE ##tmp_asst_delv
+	   (
+				DELV_ASET_SEQ_NUM     INT NOT NULL,     
+				DELV_ALT_ACC_ID       VARCHAR(20) NOT NULL,
+				IMNT_ID               INT NULL,
+				PSN_QTY               decimal(27,6)  NULL,
+				PSN_MKT_VAL           decimal(27,6) NULL,
+				IMNT_SHRT_DESC        VARCHAR(50)  NULL,
+				PSN_DT                DATETIME  NULL,
+				OMNI_REG_CD           VARCHAR(20) NULL,
+				OMNI_SSC              VARCHAR(20) NULL,
+				MSSC_HLD_FLG          VARCHAR(1) NULL,
+				RSTRCTD_FLAG          VARCHAR(1) NULL,
+				PSN_MANAGED_OVR_CD    VARCHAR(4) NULL,
+				IN_CLS_HLD            VARCHAR(1) NULL,
+				CUSIP                 VARCHAR(20) NULL,
+				TICKER                VARCHAR(20) NULL,
+				PSN_QTY_ALOC          decimal(27,6) NULL,
+				PSN_MKT_VAL_ALOC      decimal(27,6) NULL,
+				CHILD_CASE_ID         VARCHAR(20) NULL,
+				STP_STATUS            VARCHAR(20) NULL,
+				PEND_TRD_PLUS         VARCHAR(3)    NULL,
+				PEND_TRD_MINUS        VARCHAR(3)    NULL,
+				LIEN                  VARCHAR(1)    NULL,
+				CORP_ACTN             VARCHAR(1)    NULL,
+				CURR_CD				  CHAR(3)		NULL,
+				SUB_LEDGR_CD		  VARCHAR(50)	NULL,
+				MEAN_VALUE		      decimal(27,6) NULL,
+				MANUAL_FLAG			  VARCHAR(1)    NULL,
+				INTRNTNL_IND  		  VARCHAR(1)    NULL,
+				IN_FLIGHT_QTY		  decimal(27,6) NULL,
+				RECPT_LOC_CD          CHAR(5)       NULL,
+				RECPT_LOC_NM          VARCHAR(255)  NULL,
+				DRIP_ELCTN_TYP_CD	  VARCHAR(5)	NULL,
+				LIEN_QTY 		      decimal(27,6) NULL,
+				OVERRIDE_LIEN_IND	  VARCHAR(1)	NULL
+				
+		)
+                
+		<iterate property="devilererAssetDetailsLIst"> 
+	  	 INSERT INTO ##tmp_asst_delv (
+	  	 	 DELV_ASET_SEQ_NUM,
+			 DELV_ALT_ACC_ID,
+             IMNT_ID,
+             PSN_QTY,
+             PSN_MKT_VAL ,  
+             IMNT_SHRT_DESC,
+             PSN_DT,
+             OMNI_REG_CD,
+             OMNI_SSC,
+             MSSC_HLD_FLG,
+             RSTRCTD_FLAG,
+             PSN_MANAGED_OVR_CD,
+             IN_CLS_HLD,
+             CUSIP,
+             TICKER,
+             PSN_QTY_ALOC,
+             PSN_MKT_VAL_ALOC,
+             CHILD_CASE_ID,
+             STP_STATUS,
+             PEND_TRD_PLUS,
+             PEND_TRD_MINUS,
+             LIEN,
+             CORP_ACTN,
+             CURR_CD,
+             SUB_LEDGR_CD,
+             MEAN_VALUE,
+             MANUAL_FLAG,
+             INTRNTNL_IND,
+             IN_FLIGHT_QTY,
+             RECPT_LOC_CD,
+             RECPT_LOC_NM,
+             DRIP_ELCTN_TYP_CD,
+             LIEN_QTY,
+             OVERRIDE_LIEN_IND
+	  	 )
+		 VALUES (
+		 	 #devilererAssetDetailsLIst[].delvAssetSeqNum:INTEGER#,
+			 #devilererAssetDetailsLIst[].accountNumber:VARCHAR#,
+			 #devilererAssetDetailsLIst[].iInstrumentId:INTEGER#,
+			 #devilererAssetDetailsLIst[].dQuantity:DOUBLE#,
+			 #devilererAssetDetailsLIst[].dMarketValue:DOUBLE#,
+			 #devilererAssetDetailsLIst[].description:VARCHAR#,
+			 #devilererAssetDetailsLIst[].dPsnDt:DATE#,
+			 #devilererAssetDetailsLIst[].regCode:VARCHAR#,
+			 #devilererAssetDetailsLIst[].omniscc:VARCHAR#,
+			 #devilererAssetDetailsLIst[].msscFlg:VARCHAR#,
+			 #devilererAssetDetailsLIst[].rsrtctdFlg:VARCHAR#,	
+			 #devilererAssetDetailsLIst[].psnManagedOvrCd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].closelyHeldFlag:VARCHAR#,	
+			 #devilererAssetDetailsLIst[].cusip:VARCHAR#,
+			 #devilererAssetDetailsLIst[].ticker:VARCHAR#,
+			 #devilererAssetDetailsLIst[].dQuantityAloc:DOUBLE#,
+			 #devilererAssetDetailsLIst[].dMarketValueAloc:DOUBLE#,	
+			 #devilererAssetDetailsLIst[].childCaseId:VARCHAR#,
+			 #devilererAssetDetailsLIst[].stpStatus:VARCHAR#,
+			 #devilererAssetDetailsLIst[].pendTrdPlus:VARCHAR#,
+			 #devilererAssetDetailsLIst[].pendTrdMinus:VARCHAR#,
+			 #devilererAssetDetailsLIst[].lienInd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].corpActn:VARCHAR#,
+			 #devilererAssetDetailsLIst[].currCd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].subLedgrCd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].dMeanValue:DOUBLE#,
+			 #devilererAssetDetailsLIst[].manualFlag:VARCHAR#,					 
+			 #devilererAssetDetailsLIst[].internalInd:VARCHAR#,	 
+			 #devilererAssetDetailsLIst[].dInflightQty:DOUBLE#,
+			 #devilererAssetDetailsLIst[].recptLocCd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].recptLocNm:VARCHAR#,
+			 #devilererAssetDetailsLIst[].dripElctnTypCd:VARCHAR#,
+			 #devilererAssetDetailsLIst[].dLeanQty:DOUBLE#,
+			 #devilererAssetDetailsLIst[].lienover:VARCHAR#
+		 )
+		</iterate> 
+	  
+	  	<!--  execute AATA..sp_at_saveDelvAssets #caseId:VARCHAR#,#operationInd:VARCHAR#,#insertInd:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#
+	  	 -->	 
+	  
+	</statement>
+	<!-- Mapping for procedure sp_at_saveDelvAssets -->
+	<parameterMap id="saveDelvAssetsParam" class="java.util.Map">
+		<parameter property="caseId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="operationInd"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="insertInd"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="int" mode="OUT"/>
+		<parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="loginId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	</parameterMap>
+	
+	<procedure id="saveDelvAssets" parameterMap="saveDelvAssetsParam">
+		<![CDATA[
+		{call AATA..sp_at_saveDelvAssets(?,?,?,?,?,?)}
+		]]>
+	</procedure>
+	<update id="dropDelvAssetDetailsTable">IF OBJECT_ID ('##tmp_asst_delv') IS NOT NULL DROP TABLE ##tmp_asst_delv</update>  
+  		
+  		<!-- Proc sp_at_saveDelvAssets End -->
+  		
+  		<!-- Proc sp_at_saveDelvAsetTaxLots  Start -->
+  		
+  		<statement id="setTaxSlotDetails" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	 	IF OBJECT_ID ('##tmp_asst_delv_tax') IS NOT NULL DROP TABLE ##tmp_asst_delv_tax
+	
+	   	CREATE TABLE ##tmp_asst_delv_tax
+			(
+			 DELV_ASET_SEQ_NUM    INT  NOT NULL ,
+			 TAX_LOT_ID           INT  NOT NULL ,
+			 IMNT_ID              INT  NULL ,
+			 TAX_LOT_EFF_DT       DATETIME  NULL ,
+			 TAX_LOT_QTY          decimal(27,6)  NULL ,
+			 TAX_MKT_VAL          decimal(27,6)  NULL ,
+			 ORDER_OF_DEPLETION   INT NOT NULL,
+			 TAX_LOT_QTY_ALOC     decimal(27,6)  null,
+			 TAX_LOT_MKT_VAL_ALOC decimal(27,6)  null,
+			 UNIT_COST        numeric(27,6)  null
+			)
+
+		<iterate property="taxSlotDetailsLIst"> 
+	  	 INSERT INTO ##tmp_asst_delv_tax (
+	  	 	 DELV_ASET_SEQ_NUM,
+	  	 	 TAX_LOT_ID,
+	  	 	 IMNT_ID,
+	  	 	 TAX_LOT_EFF_DT,
+             TAX_LOT_QTY,
+             TAX_MKT_VAL,
+             ORDER_OF_DEPLETION,
+             TAX_LOT_QTY_ALOC,
+             TAX_LOT_MKT_VAL_ALOC,
+             UNIT_COST
+	  	 )
+		 VALUES (
+		  	 #taxSlotDetailsLIst[].delvAssetSeqNum:INTEGER#,		  	 
+			 #taxSlotDetailsLIst[].iTaxSlotId:INTEGER#,
+			 #taxSlotDetailsLIst[].iInstrumentId:INTEGER#,
+			 #taxSlotDetailsLIst[].dAquisitionDt:DATE#,
+			 #taxSlotDetailsLIst[].dQuantity:DOUBLE#,
+			 #taxSlotDetailsLIst[].dMarketValue:DOUBLE#,
+			 #taxSlotDetailsLIst[].iOrderOfDepletion:INTEGER#,
+			 #taxSlotDetailsLIst[].dQuantityAloc:DOUBLE#,
+			 #taxSlotDetailsLIst[].dMarketValueAloc:DOUBLE#,
+			 #taxSlotDetailsLIst[].dUnitCost:DOUBLE#
+		 )
+		</iterate> 
+	  
+	  	execute AATA..sp_at_saveDelvAsetTaxLots  #caseId:VARCHAR#,#operationInd:VARCHAR#,#insertInd:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#
+	  
+		</statement>
+	
+		<update id="dropTaxSlotTabel">IF OBJECT_ID ('##tmp_asst_delv_tax') IS NOT NULL DROP TABLE ##tmp_asst_delv_tax</update>  
+	<!-- Proc sp_at_saveDelvAsetTaxLots  Start -->
+	
+	<!-- Proc sp_at_getDelvAsetTaxLots starts-->
+  		
+	<parameterMap id="spAATAGetDelvAssetTax" class="java.util.HashMap">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetDelvAssetTaxResult" class="com.jpmchase.aata.services.to.AATATaxLotDtlsTO">
+  		
+		<!-- result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String" /-->
+		<result property="delvAssetSeqNum" column="DelvAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="iTaxSlotId" column="TaxLotId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="dAquisitionDt" column="TaxLotEffDate" jdbcType="DATE" javaType="java.sql.Date"/>
+		<result property="quantity" column="TaxLotQty" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="TaxMktVal" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dplOrder" column="OrderOfDepletion" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="qtyToMove" column="TaxLotQtyAllocated" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="mvToMove" column="TaxLotMktValAllocated" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="unitCost" column="UnitCost" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="allowFractionInd" column="AllowFractionIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="allowNegativeIndicator" column="AllowNegativeIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="taxLotAllowInd" column="LotInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  	
+	<procedure id="getTaxSlotDetails" parameterMap="spAATAGetDelvAssetTax" resultMap="spAATAGetDelvAssetTaxResult" >
+  			{call AATA..sp_at_getDelvAsetTaxLots(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getDelvAsetTaxLots ends-->
+	
+	<!-- Proc sp_at_getDelvAssets  starts-->
+  		
+	<parameterMap id="spAATAGetDelvAsset" class="java.util.HashMap">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetDelvAssetResult" class="com.jpmchase.aata.services.to.AATAAssetDtlsTO">
+  		
+		<!-- result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String" /-->
+		<result property="accountNumber" column="DelvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="instrumentId" column="ImntId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvAssetSeqNum" column="DelvAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<!-- Below 2 lines modified to use remaining position quantity instead of position quantity -->
+		<!--  
+		<result property="quantity" column="PsnQty" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="PsnMktVal" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		-->
+		<result property="quantity" column="RemngPsnQty" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="RemngPsnMktVal" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		
+		<result property="description" column="ImntShrtDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="createDate" column="PsnDate" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="regCode" column="OmniRegCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="omniscc" column="OmniSsc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="msscFlg" column="MsscHldFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="rsrtctdFlg" column="RstrctdFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="psnManagedOvrCd" column="ManagedAssetOverrideCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="closelyHeldFlag" column="CloselyHeldFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="ticker" column="Ticker" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="caseId" column="AtCaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="childCaseId" column="ChildCaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="stpStatus" column="StpStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeCode" column="AsstTypeCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="asstTypeDesc" column="AsstTypeDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="allowIndicator" column="AllowIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowFractionIndicator" column="AllowFractionIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="qtyToMove" column="PsnQtyAloc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="mvToMove" column="PsnMktValAloc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="pendTrdPlus" column="PendTrdPlus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="pendTrdMinus" column="PendTrdMinus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienInd" column="Lien" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="corpActn" column="CorpActn" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="currCd" column="CurrencyCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="subLedgrCd" column="SubLedgerCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="iwsIndCd" column="IwsInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="pbisInd" column="PbisInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowNegativeIndicator" column="AllowNegativeIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="helpText" column="HelpText" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="meanValue" column="MeanVale" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="manualFlag" column="ManualFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="internalInd" column="INTRNTNL_IND" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="inflightQty" column="IN_FLIGHT_QTY" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="RECPT_LOC_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocNm" column="RECPT_LOC_NM" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dripElctnTypCd" column="DRIP_ELCTN_TYP_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="leanQty" column="LIEN_QTY" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="derivFlag" column="DERV_FLAG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienover" column="OVERRIDE_LIEN_IND" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  	
+	<procedure id="getDelvAssetDetails" parameterMap="spAATAGetDelvAsset" resultMap="spAATAGetDelvAssetResult" >
+  			{call AATA..sp_at_getDelvAssets(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getDelvAssets  ends-->
+	
+	<!-- Proc-  sp_at_updateTaxLotSelMethod  starts -->
+	
+	<parameterMap id="spAATASaveDefaultTaxLotParam" class="com.jpmchase.aata.services.to.AATADelivererAccAssetDtlsTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="taxLotMethodology" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="taxLotCheckBoxVal" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	   	<parameter property="fullOverrideLienInd" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />	 
+	</parameterMap>
+  		
+	<procedure id="spAATASaveDefaultTaxLot" parameterMap="spAATASaveDefaultTaxLotParam">
+  			{call AATA..sp_at_updateTaxLotSelMethod(?,?,?,?,?,?,?)}
+	</procedure>
+		
+	<!-- Proc-  sp_at_updateTaxLotSelMethod  ends -->
+	
+	<!-- Proc sp_at_saveRecvAsset Start -->
+  		
+  		<statement id="setReceivingAssetDetails" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_recv_assets') IS NOT NULL DROP TABLE ##tmp_recv_assets
+	  	
+	  	CREATE TABLE ##tmp_recv_assets
+		(
+		   RECV_ACC_SEQ_NUM         INT  NOT NULL,
+		   RECV_ASET_SEQ_NUM        INT NOT NULL,
+		   IMNT_ID                  INT  NULL,
+		   IMNT_SHRT_DESC           VARCHAR(50)  NULL,
+		   CUSIP                    VARCHAR(20)  NULL,
+		   TICKER                   VARCHAR(20)  NULL,
+		   PSN_DT                   DATETIME  NULL,
+		   PSN_QTY_RECD             NUMERIC(28,3)  NULL,
+		   PSN_MKT_VAL              NUMERIC(28,3)  NULL,
+		   OMNI_REG_CD              VARCHAR(20)  NULL,
+		   OMNI_SSC                 VARCHAR(20)  NULL,
+		   MSSC_HLD_FLG             VARCHAR(1)  NULL,
+		   RSTRCTD_FLG              VARCHAR(1)  NULL,
+		   MISC_COND                VARCHAR(50)  NULL,
+		   ASET_TYP_CD              VARCHAR(20)  NULL,
+		   CHILD_CASE_ID            VARCHAR(20)  NULL,
+		   STP_STATUS               VARCHAR(20)  NULL,
+   		   TL_IND                   VARCHAR(1)  NULL,
+		   IWS_APPRVL_FLG           VARCHAR(1)  NULL,
+		   SUB_LEDGR_CD             VARCHAR(50)  NULL,
+		   MANUAL_FLAG   			VARCHAR(1)  NULL,
+		   MEAN_VALUE   			decimal(27,6) NULL ,
+		   INTRNTNL_IND  		    VARCHAR(1)    NULL,
+		   IN_FLIGHT_QTY		    decimal(27,6) NULL,
+		   RECPT_LOC_CD             CHAR(5) NULL,
+   		   RECPT_LOC_NM             VARCHAR(255) NULL,
+   		   DRIP_ELCTN_TYP_CD      	VARCHAR(5) NULL,
+		   LIEN_QTY_RECD		    decimal(27,6) NULL,
+		   OVERRIDE_LIEN_IND        VARCHAR(1) NULL,
+		   PENNY_STK_IND			VARCHAR(1) NULL
+		)
+
+
+                
+		<iterate property="receivingAssetDetailsList"> 
+	  	 INSERT INTO ##tmp_recv_assets (
+	  	 	 RECV_ACC_SEQ_NUM,
+			 RECV_ASET_SEQ_NUM,
+             IMNT_ID,
+             IMNT_SHRT_DESC, 
+             CUSIP,
+             TICKER,
+             PSN_DT,
+             PSN_QTY_RECD,
+             PSN_MKT_VAL,
+             OMNI_REG_CD,
+             OMNI_SSC,
+             MSSC_HLD_FLG,
+             RSTRCTD_FLG,
+             MISC_COND,
+             ASET_TYP_CD,
+             CHILD_CASE_ID,
+             STP_STATUS,
+             TL_IND,
+             IWS_APPRVL_FLG,
+             SUB_LEDGR_CD,
+             MANUAL_FLAG,
+             MEAN_VALUE,
+             INTRNTNL_IND,
+             IN_FLIGHT_QTY,
+             RECPT_LOC_CD,
+             RECPT_LOC_NM,
+             DRIP_ELCTN_TYP_CD,
+             LIEN_QTY_RECD,
+             OVERRIDE_LIEN_IND,
+             PENNY_STK_IND
+	  	 )
+		 VALUES (
+		 	 #receivingAssetDetailsList[].iRecAccountId:INTEGER#,
+			 #receivingAssetDetailsList[].iRecAssetSeqNum:INTEGER#,
+			 #receivingAssetDetailsList[].iInstrumentId:INTEGER#,
+			 #receivingAssetDetailsList[].description:VARCHAR#,
+			 #receivingAssetDetailsList[].cusip:VARCHAR#,
+			 #receivingAssetDetailsList[].ticker:VARCHAR#,
+			 #receivingAssetDetailsList[].dPsnDt:DATE#,
+			 #receivingAssetDetailsList[].dQuantity:DOUBLE#,
+			 #receivingAssetDetailsList[].dMarketValue:DOUBLE#,
+			 #receivingAssetDetailsList[].regCode:VARCHAR#,	
+			 #receivingAssetDetailsList[].omniscc:VARCHAR#,
+			 #receivingAssetDetailsList[].msscFlg:VARCHAR#,
+			 #receivingAssetDetailsList[].rsrtctdFlg:VARCHAR#,
+			 #receivingAssetDetailsList[].miscCondition:VARCHAR#,
+			 #receivingAssetDetailsList[].assetTypeCode:VARCHAR#,	
+			 #receivingAssetDetailsList[].childCaseId:VARCHAR#,
+			 #receivingAssetDetailsList[].stpStatus:VARCHAR#,
+			 #receivingAssetDetailsList[].tlInd:VARCHAR#,
+			 #receivingAssetDetailsList[].iwsApproveCd:VARCHAR#,
+			 #receivingAssetDetailsList[].subLedgerCd:VARCHAR#, 
+			 #receivingAssetDetailsList[].manualFlag:VARCHAR#,
+			 #receivingAssetDetailsList[].dMeanValue:DOUBLE#,
+			 #receivingAssetDetailsList[].internalInd:VARCHAR#,	 
+			 #receivingAssetDetailsList[].dInflightQty:DOUBLE#,
+			 #receivingAssetDetailsList[].recptLocCd:VARCHAR#,
+			 #receivingAssetDetailsList[].recptLocNm:VARCHAR#,
+			 #receivingAssetDetailsList[].dripElctnTypCd:VARCHAR#,
+			 #receivingAssetDetailsList[].dLeanQty:DOUBLE#,
+			 #receivingAssetDetailsList[].lienover:VARCHAR#,
+			 #receivingAssetDetailsList[].pennyStkInd:VARCHAR#			 
+		 )
+		</iterate> 
+
+	</statement>
+	<parameterMap id="saveRecvAssetParam" class="java.util.Map">
+		<parameter property="caseId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>		
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="int" mode="OUT"/>
+		<parameter property="errorMsg" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="loginId"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="operationInd"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="insertInd"	jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	</parameterMap>
+	<procedure id="saveRecvAsset" parameterMap="saveRecvAssetParam">
+		<![CDATA[
+		{call AATA..sp_at_saveRecvAsset(?,?,?,?,?,?)}
+		]]>
+	</procedure>
+	<update id="dropReceivingAssetDetailsTable">IF OBJECT_ID ('##tmp_recv_assets') IS NOT NULL DROP TABLE ##tmp_recv_assets</update>  
+  		
+  		<!-- Proc sp_at_saveRecvAsset End -->
+  		
+  		
+  			<!-- Proc sp_at_saveRecvAsetTaxLots Start -->
+  		
+  		<statement id="setReceivingAssetTaxLotDtls" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_rcv_aset_tax_lot') IS NOT NULL DROP TABLE ##tmp_rcv_aset_tax_lot
+	  	
+	  	CREATE TABLE ##tmp_rcv_aset_tax_lot
+		(
+		   RECV_ASET_SEQ_NUM    INT   NOT NULL,
+		   RECV_ACC_SEQ_NUM     INT   NOT NULL,
+		   TAX_LOT_ID           INT   NOT NULL,
+		   TAX_LOT_QTY_ALOC     NUMERIC(27,6)NULL,
+		   TAX_LOT_MKT_VAL_ALOC NUMERIC(27,6)NULL,
+		   TAX_LOT_EFF_DT       VARCHAR(18)  NULL,
+		   ORDER_OF_DEPLETION   INTEGER NULL,   
+		   UNIT_COST            NUMERIC(27,6)NULL,
+   		   TAX_LOT_QTY          NUMERIC(27,6)NULL,
+           TAX_LOT_MKT_VAL      NUMERIC(27,6)NULL
+		)
+
+
+                
+		<iterate property="receivingAccTaxLotDtlsSaveList"> 
+	  	 INSERT INTO ##tmp_rcv_aset_tax_lot (
+	  	 	 RECV_ASET_SEQ_NUM,
+			 RECV_ACC_SEQ_NUM,
+             TAX_LOT_ID,
+             TAX_LOT_QTY_ALOC,
+             TAX_LOT_MKT_VAL_ALOC , 
+             TAX_LOT_EFF_DT, 
+             ORDER_OF_DEPLETION,
+             UNIT_COST,
+             TAX_LOT_QTY,
+             TAX_LOT_MKT_VAL
+	  	 )
+		 VALUES (
+		 	 #receivingAccTaxLotDtlsSaveList[].iRecAssetSeqNum:INTEGER#,
+			 #receivingAccTaxLotDtlsSaveList[].iRecAccountId:INTEGER#,
+			 #receivingAccTaxLotDtlsSaveList[].iTaxSlotId:INTEGER#,
+			 #receivingAccTaxLotDtlsSaveList[].dQuantityAloc:DOUBLE#,
+			 #receivingAccTaxLotDtlsSaveList[].dMarketValueAloc:DOUBLE#,
+			 #receivingAccTaxLotDtlsSaveList[].dAquisitionDt:DATE#,
+			 #receivingAccTaxLotDtlsSaveList[].iOrderOfDepletion:INTEGER#,	
+			 #receivingAccTaxLotDtlsSaveList[].dUnitCost:DOUBLE#,
+			 #receivingAccTaxLotDtlsSaveList[].dQuantity:DOUBLE#,
+			 #receivingAccTaxLotDtlsSaveList[].dMarketValue:DOUBLE#
+		 )
+		</iterate> 
+	  
+	  	 execute AATA..sp_at_saveRecvAsetTaxLots #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#,#operationInd:VARCHAR#,#insertInd:VARCHAR#
+	  	 
+	  
+	</statement>
+	<update id="dropReceivingAssetTaxDetailsTable">IF OBJECT_ID ('##tmp_rcv_aset_tax_lot') IS NOT NULL DROP TABLE ##tmp_rcv_aset_tax_lot</update>  
+  		
+  		<!-- Proc sp_at_saveRecvAsetTaxLots End -->
+  		
+  		<!-- Proc sp_at_getRecvAsset  starts-->
+  		
+	<parameterMap id="spAATAGetReceivingAsset" class="java.util.HashMap">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetReceivingAssetResult" class="com.jpmchase.aata.services.to.AATAReceivingAccAssetDtlsTO">
+  		
+		<result property="recAccountId" column="RecvAccSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAssetSeqNum" column="RecAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.String"/>
+		<result property="recAccountNo" column="RecvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAccountTitle" column="RecvAccName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="instrumentId" column="ImntId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="description" column="ImntShrtDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticker" column="Ticker" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="psnDt" column="PsnDt" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="quantity" column="PsnQtyRecd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="PsnMktVal" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="regCode" column="OmniRegCd" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="omniscc" column="OmniSsc" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="msscFlg" column="MsscHldFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="rsrtctdFlg" column="RstrctdFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="miscCondition" column="MiscCond" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeCode" column="AsstTypeCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="asstTypeDesc" column="AsetTypDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="childCaseId" column="ChildCaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="stpStatus" column="StpStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="tlInd" column="TaxLevelIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="subLedgerCd" column="SubLedgrCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowFractionInd" column="AllowFrctnInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowNegativeInd" column="AllowNegativeInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="brkrgtoImAttchInd" column="brkrgtoImAttchInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="iwsApproveCd" column="IwsApprvlFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="meanValue" column="MeanValue" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="manualFlag" column="ManualFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="internalInd" column="INTRNTNL_IND" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="inflightQty" column="IN_FLIGHT_QTY" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="tfrQtyExcdInd" column="TFR_QTY_EXCD_IND" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="RECPT_LOC_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocNm" column="RECPT_LOC_NM" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<!-- <result property="psnQtyFulPrtlInd" column="PsnQtyFulPrtlInd" jdbcType="VARCHAR" javaType="java.lang.String"/>  -->
+		<result property="dripElctnTypCd" column="DripElctnTypCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="leanQty" column="LienQtyRecd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="RECPT_LOC_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrLvl" column="DELV_INSTR_LVL" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrId" column="DELV_INSTR_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienover" column="OverrideLienInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="pennyStkInd" column="PennyStkInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	
+	</resultMap>
+  	
+	<procedure id="getReceivingAssetDetails" parameterMap="spAATAGetReceivingAsset" resultMap="spAATAGetReceivingAssetResult" >
+  			{call AATA..sp_at_getRecvAsset(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getRecvAsset  ends-->
+	
+	<!-- Proc sp_at_getRecvAsetTaxLots  starts-->
+  		
+	<parameterMap id="spAATAGetReceivingAssetTax" class="java.util.HashMap">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetReceivingAssetTaxResult" class="com.jpmchase.aata.services.to.AATATaxLotDtlsTO">
+  		
+		<result property="recAccountId" column="RecvAcctSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAssetSeqNum" column="RecvAsetSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxLotId" column="TaxLotId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="qtyToMove" column="TaxLotQtyAloc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="mvToMove" column="TaxLotMktValAloc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="aquisitionDt" column="TaxLotEffDt" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dAquisitionDt" column="TaxLotEffDt" jdbcType="DATE" javaType="java.sql.Date"/>
+		<result property="dplOrder" column="OrderOfDepletion" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="unitCost" column="UnitCost" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="quantity" column="TaxLotQuantity" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="TaxLotMarketValue" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowFractionInd" column="AllowFrctnInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  	
+	<procedure id="getReceivingAssetTaxLotDetails" parameterMap="spAATAGetReceivingAssetTax" resultMap="spAATAGetReceivingAssetTaxResult" >
+  			{call AATA..sp_at_getRecvAsetTaxLots(?,?,?)}
+	</procedure>
+  		                  
+  		
+	<!-- Proc  sp_at_getRecvAsetTaxLots  ends-->
+  		
+	<!-- Proc sp_at_saveRecvAccts Start -->
+      
+      <statement id="setReceivingAccDtls" parameterClass="map">
+            SET CHAINED OFF
+                  IF OBJECT_ID ('##tmp_recv_accts') IS NOT NULL DROP TABLE ##tmp_recv_accts
+                  
+                   CREATE TABLE ##tmp_recv_accts
+					(
+					      	RECV_ALT_ACC_ID   VARCHAR(20)  NULL,
+   							RECV_ACC_SEQ_NUM  INT          NOT NULL,
+						    RECV_ACC_ID       VARCHAR(20)  NULL,
+						    RECV_ACC_NAME     VARCHAR(500) NULL,
+						    ECI               VARCHAR(20)  NULL,
+						    PROD_CODE         INT  NULL,
+						    SUB_PROD_CODE     INT  NULL,
+						    ACC_SERV_NM       CHAR(40) NULL,
+						    JPMSI_IN          CHAR(1)  NULL,
+						    PARTY_ID          INT NULL,
+						    SPN               VARCHAR(20) NULL,
+						    OPTN_LVL_CD       INT NULL,
+						    STRUCT_PROD_ALLOC_IND VARCHAR(1) NULL,
+						    RECV_ACC_ENTY_IND        CHAR(1)      NULL,
+   							RECV_ACC_ENTY_NAME       VARCHAR(500) NULL,
+   							RECV_ACC_ADDRESS         VARCHAR(500) NULL,
+   							RECV_ACC_TAX_ID          VARCHAR(100) NULL,
+   							RECV_ACC_DOB             DATE         NULL,
+   							RECV_ACC_COUNTRY         VARCHAR(100) NULL,
+   							SSST_STS                 VARCHAR(20)  NULL
+					)
+ 
+
+           <iterate property="receivingAccDtlsList">
+                        INSERT INTO ##tmp_recv_accts (
+                        RECV_ALT_ACC_ID  , 
+						RECV_ACC_SEQ_NUM ,
+						RECV_ACC_ID  ,	
+						RECV_ACC_NAME,
+						ECI  	,	
+						PROD_CODE ,	
+						SUB_PROD_CODE ,
+						ACC_SERV_NM,
+						JPMSI_IN,
+						PARTY_ID,
+						SPN,
+						OPTN_LVL_CD,
+						STRUCT_PROD_ALLOC_IND,
+						RECV_ACC_ENTY_IND,
+						RECV_ACC_ENTY_NAME,
+						RECV_ACC_ADDRESS,
+						RECV_ACC_TAX_ID,
+						RECV_ACC_DOB,
+						RECV_ACC_COUNTRY,
+						SSST_STS
+             	)
+              VALUES (
+                  #receivingAccDtlsList[].accountNo:VARCHAR#,
+                  #receivingAccDtlsList[].iRecAccountId:INTEGER#,
+                  #receivingAccDtlsList[].accountNumber:VARCHAR#,
+                  #receivingAccDtlsList[].accountTitle:VARCHAR#,
+                  #receivingAccDtlsList[].eci:VARCHAR#,
+                  #receivingAccDtlsList[].iProductCd:INTEGER#,
+                  #receivingAccDtlsList[].iSubProductCd:INTEGER#,
+                  #receivingAccDtlsList[].accServName:VARCHAR#,
+                  #receivingAccDtlsList[].jpmsiInd:VARCHAR#,
+                  #receivingAccDtlsList[].odsPartyId:INTEGER#,
+                  #receivingAccDtlsList[].spn:VARCHAR#,
+                  #receivingAccDtlsList[].iOptionLvlCd:INTEGER#,
+                  #receivingAccDtlsList[].allowStructureProduct:VARCHAR#,
+                  #receivingAccDtlsList[].individualFlag:VARCHAR#,
+                  #receivingAccDtlsList[].individualName:VARCHAR#,
+                  #receivingAccDtlsList[].address:VARCHAR#,
+                  #receivingAccDtlsList[].taxId:VARCHAR#,
+                  #receivingAccDtlsList[].dOmniDateOfBirth:DATE#,
+                  #receivingAccDtlsList[].countryOfResi:VARCHAR#,
+                  #receivingAccDtlsList[].sanctionStatus:VARCHAR#
+                   )
+                </iterate>  
+                
+                  execute AATA..sp_at_saveRecvAccts #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#
+            </statement>
+            
+            <update id="dropReceivingAccTabel">IF OBJECT_ID ('##tmp_recv_accts') IS NOT NULL DROP TABLE ##tmp_recv_accts</update> 
+
+            <!-- Proc sp_at_saveRecvAccts End -->
+
+		<!-- Proc-  sp_at_getRecvAccts  starts -->
+	<parameterMap id="spGetRecAccInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  	
+	<resultMap id="spGetRecAccInfoResult" class="com.jpmchase.aata.services.to.AATAReceiveAccountTO">
+	
+  		<result property="recAccSeqNumber" column="RecvAccSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAccNumber" column="RecvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAccName" column="RecvAccName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="individualFlag" column="EntityInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="individualName" column="EntityName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="address" column="Address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxId" column="TaxId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dateOfBirth" column="DOB" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="countryOfResi" column="Country" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dwacRefNum" column="DwacRefNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  		
+	<procedure id="spGetRecAccInfo" parameterMap="spGetRecAccInfoParam" resultMap="spGetRecAccInfoResult" >
+  			{call AATA..sp_at_getRecvAccts(?,?,?)}
+	</procedure>
+	<!-- Proc-  sp_at_getRecvAccts  ends -->
+	
+
+	<!-- Proc-  sp_at_getRecvAsset  starts -->
+	<parameterMap id="spGetRecAssetInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  	
+	<resultMap id="spGetRecAssetInfoResult" class="com.jpmchase.aata.services.to.AATAReceiveAssetTO">
+  			
+		<result property="recAccSeqNumber" column="RecvAccSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAssetSeqNo" column="RecAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAccNumber" column="RecvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAccName" column="RecvAccName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetType" column="AsstTypeCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeDesc" column="AsetTypDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="isPrtlSTPVldFl" column="IsPrtlSTPVldFl" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="isPrtlBinStpFl" column="IsPrtlBinStpFl" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="RECPT_LOC_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="delvInstrLvl" column="DELV_INSTR_LVL" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrId" column="DELV_INSTR_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienover" column="OverrideLienInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  		
+	<procedure id="spGetRecAssetInfo" parameterMap="spGetRecAssetInfoParam" resultMap="spGetRecAssetInfoResult" >
+  			{call AATA..sp_at_getRecvAsset(?,?,?)}
+	</procedure>
+	<!-- Proc-  sp_at_getRecvAsset  ends -->
+	<!-- Proc-  sp_at_getRecvAccts  starts -->
+	<parameterMap id="spGetRecAccInfoForSecurityParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  	
+	<resultMap id="spGetRecAccInfoForSecurityResult" class="com.jpmchase.aata.services.to.AATAOmniAccountSearchTO">
+  			
+		<result property="recAccountId" column="RecvAccSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="accountNo" column="RecvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="accountTitle" column="RecvAccName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="eci" column="ECI" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="productCd" column="ProdCode" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="subProductCd" column="SubProdCode" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="accServName" column="AccServName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="jpmsiInd" column="JpmsiInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="spn" column="PartyAltId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="optionLvlCd" column="OptnLvlCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowStructureProduct" column="StructProdAllocInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="individualFlag" column="EntityInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="individualName" column="EntityName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="address" column="Address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxId" column="TaxId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dateOfBirth" column="DOB" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="countryOfResi" column="Country" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dwacRefNum" column="DwacRefNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  		
+	<procedure id="spGetRecAccForSecurityInfo" parameterMap="spGetRecAccInfoForSecurityParam" resultMap="spGetRecAccInfoForSecurityResult" >
+  			{call AATA..sp_at_getRecvAccts(?,?,?)}
+	</procedure>
+	<!-- Proc-  sp_at_getRecvAccts  ends -->
+	
+<!-- Proc-  sp_at_getDelvInstructions  starts -->
+<parameterMap id="spGetAccLvlInstInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	   		 
+	</parameterMap>
+  	
+	<resultMap id="spGetAccLvlInstInfoResult" class="com.jpmchase.aata.services.to.AATAAccountLevelInstructionTO">
+  		
+  		<result property="recAccSeqNumber" column="RecvAccSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>	
+		<result property="debitTaxCode" column="DebitTaxCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditTaxCode" column="CreditTaxCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="tradeDt" column="TradeDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="settledDt" column="SettledDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="debitTrailerDescription1" column="DebitTrlrDesc1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="debitTrailerDescription2" column="DebitTrlrDesc2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="debitTrailerDescription3" column="DebitTrlrDesc3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditTrailerDescription1" column="CreditTrlrDesc1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditTrailerDescription2" column="CreditTrlrDesc2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditTrailerDescription3" column="CreditTrlrDesc3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="taxCodeMapId" column="TaxCodeMapId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+  			
+	</resultMap>
+  		
+	<procedure id="spGetAccLvlInstInfo" parameterMap="spGetAccLvlInstInfoParam" resultMap="spGetAccLvlInstInfoResult" >
+  			{call AATA..sp_at_getDelvInstructions(?,?,?)}
+	</procedure>
+	  <!-- Proc-  sp_at_getDelvInstructions  ends -->
+	  <!-- Proc sp_at_getTaxLotSelMethod  starts-->
+                                
+      <parameterMap id="spAATAGetTaxLotSelMethodParam" class="java.util.HashMap">
+          <parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+          <parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		  <parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+      </parameterMap>
+                                             
+      <resultMap id="spAATAGetTaxLotSelMethodParam" class="com.jpmchase.aata.services.to.AATADelivererAccAssetDtlsTO">
+          <result property="taxLotMethodology" column="DfltTaxLotMthd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+          <result property="taxLotDescription" column="DfltTaxLotMthdDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>          
+          <result property="taxLotCheckBoxVal" column="OvrrideTaxLot" jdbcType="VARCHAR" javaType="java.lang.String"/>
+          <result property="fullOverrideLienInd" column="OverrideLienInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	  </resultMap>
+	  
+	  <procedure id="getDefaultTaxSlotDetails" parameterMap="spAATAGetTaxLotSelMethodParam" resultMap="spAATAGetTaxLotSelMethodParam" >
+           {call AATA..sp_at_getTaxLotSelMethod(?,?,?)}
+      </procedure>
+      <!-- Proc sp_at_getTaxLotSelMethod  ends-->
+      <!-- Proc sp_at_saveRecvAcctDelvInstr starts -->
+	<statement id="setAccLvlInst" parameterClass="map">
+            SET CHAINED OFF
+                  IF OBJECT_ID ('##tmp_recv_acct_delv_instr') IS NOT NULL DROP TABLE ##tmp_recv_acct_delv_instr
+                  
+                   CREATE TABLE ##tmp_recv_acct_delv_instr
+                        (
+                               RECV_ACC_SEQ_NUM  	INT  NOT NULL,
+							   DEBIT_TAX_CD   		VARCHAR(20)  NULL,
+							   TRADE_DT         	DATETIME     NULL,
+							   SETTLED_DT 			DATETIME  	 NULL,
+							   DEBIT_TRLR_DESC_1	VARCHAR(255)  NULL,
+							   DEBIT_TRLR_DESC_2	VARCHAR(255)  NULL, 
+				 	 		   DEBIT_TRLR_DESC_3	VARCHAR(255)  NULL, 
+					  		   CREDIT_TAX_CD		VARCHAR(20)  NULL,
+					  		   CREDIT_TRLR_DESC_1	VARCHAR(255)  NULL, 
+					  		   CREDIT_TRLR_DESC_2	VARCHAR(255)  NULL, 
+					  		   CREDIT_TRLR_DESC_3	VARCHAR(255)  NULL,
+					  		   TAXCODE_MAP_ID 		INT			  NULL
+							  
+
+                        )
+           <iterate property="accLvlInstTOList">
+                        INSERT INTO ##tmp_recv_acct_delv_instr (
+                        RECV_ACC_SEQ_NUM, 
+			 		 	DEBIT_TAX_CD, 
+				  		TRADE_DT, 
+				  		SETTLED_DT, 
+				  		DEBIT_TRLR_DESC_1, 
+				  		DEBIT_TRLR_DESC_2, 
+				 	 	DEBIT_TRLR_DESC_3, 
+					  	CREDIT_TAX_CD,
+					  	CREDIT_TRLR_DESC_1, 
+					  	CREDIT_TRLR_DESC_2, 
+					  	CREDIT_TRLR_DESC_3,
+					  	TAXCODE_MAP_ID
+             	)
+              VALUES (
+                  #accLvlInstTOList[].recAccSeqNumber:INTEGER#,
+                  #accLvlInstTOList[].debitTaxCode:VARCHAR#,
+                  #accLvlInstTOList[].tradeDt:DATE#,
+                  #accLvlInstTOList[].settledDt:DATE#,
+                  #accLvlInstTOList[].debitTrailerDescription1:VARCHAR#,
+                  #accLvlInstTOList[].debitTrailerDescription2:VARCHAR#,
+                  #accLvlInstTOList[].debitTrailerDescription3:VARCHAR#,
+                  #accLvlInstTOList[].creditTaxCode:VARCHAR#,
+                  #accLvlInstTOList[].creditTrailerDescription1:VARCHAR#,
+                  #accLvlInstTOList[].creditTrailerDescription2:VARCHAR#,
+                  #accLvlInstTOList[].creditTrailerDescription3:VARCHAR#,
+                  #accLvlInstTOList[].taxCodeMapId:INTEGER#
+                   )
+           </iterate>  
+                
+                  execute AATA..sp_at_saveRecvAcctDelvInstr #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#
+    </statement>
+            
+<update id="dropRecAccDelvInstTbl">IF OBJECT_ID ('##tmp_recv_acct_delv_instr') IS NOT NULL DROP TABLE ##tmp_recv_acct_delv_instr</update>
+<!-- Proc sp_at_saveRecvAcctDelvInstr ends -->
+
+<!-- START : Proc sp_at_saveRecvAcctDelvAttr -->
+<statement id="setAssetLvlInst" parameterClass="map">
+            SET CHAINED OFF
+                  IF OBJECT_ID ('##tmp_recv_asset_delv_instr') IS NOT NULL DROP TABLE ##tmp_recv_asset_delv_instr
+                  
+                   CREATE TABLE ##tmp_recv_asset_delv_instr
+                        (		
+                        	   ASET_TYP_CD 			VARCHAR(20)  NOT NULL,
+                        	   RECV_ASET_SEQ_NUM    INT  		 NULL,
+                        	   RECV_ACC_SEQ_NUM    	INT  		 NOT NULL,
+                        	   DELV_INSTR_LVL       VARCHAR(20) NULL,
+                			   DELV_INSTR_LVL_CODE  VARCHAR(20) NULL,                        	   
+                               ATTR_ID         		INT  NULL,
+							   ATTR_VAL 			VARCHAR(255)  NULL
+							  
+
+                        )
+           <iterate property="assetLvlInstTOList">
+              INSERT INTO ##tmp_recv_asset_delv_instr (
+                   ASET_TYP_CD, 
+		 		   RECV_ASET_SEQ_NUM,
+		 		   RECV_ACC_SEQ_NUM,
+		 		   DELV_INSTR_LVL,
+                   DELV_INSTR_LVL_CODE,
+		  		   ATTR_ID, 
+		  		   ATTR_VAL
+        	  )
+              VALUES (
+              	  #assetLvlInstTOList[].assetType:VARCHAR#,
+              	  #assetLvlInstTOList[].recAssetSeqNo:INTEGER#,
+              	  #assetLvlInstTOList[].recAccSeqNumber:INTEGER#,
+              	  #assetLvlInstTOList[].delvInstrLvl:VARCHAR#,
+              	  #assetLvlInstTOList[].delvInstrLvlCode:VARCHAR#,
+                  #assetLvlInstTOList[].attrId:INTEGER#,
+                  #assetLvlInstTOList[].fieldValue:VARCHAR#
+                  
+              )
+              
+              <!-- INSERT INTO TRACK (
+                   ASET_TYP_CD, 
+		 		   RECV_ASET_SEQ_NUM,
+		 		   RECV_ACC_SEQ_NUM,
+		  		   ATTR_ID, 
+		  		   ATTR_VAL
+        	  )
+              VALUES (
+              	  #assetLvlInstTOList[].assetType:VARCHAR#,
+              	  #assetLvlInstTOList[].recAssetSeqNo:INTEGER#,
+              	  #assetLvlInstTOList[].recAccSeqNumber:INTEGER#,
+                  #assetLvlInstTOList[].attrId:INTEGER#,
+                  #assetLvlInstTOList[].fieldValue:VARCHAR#
+                  
+              ) -->
+              
+           </iterate>  
+                
+                  execute AATA..sp_at_saveRecvAcctDelvAttr #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:INTEGER#,#insertInd:CHAR#
+    </statement>
+            
+<update id="dropRecAssetDelvInstTbl">IF OBJECT_ID ('##tmp_recv_asset_delv_instr') IS NOT NULL DROP TABLE ##tmp_recv_asset_delv_instr</update>
+<!-- END : Proc sp_at_saveRecvAcctDelvAttr -->
+
+<!-- START : Proc sp_at_getRecvAcctDelvAttr  -->
+	<parameterMap id="spGetAssetLvlInstInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetAssetLvlInstInfoResult" class="com.jpmchase.aata.services.to.AATAAssetLevelIstructionTO">
+	  			
+		<result property="recAccSeqNumber" column="RecvAccSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAssetSeqNo" column="RecvAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetType" column="AsetTypCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeDesc" column="AsetTypDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="attrId" column="AttrId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="fieldName" column="AttrNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="fieldValue" column="AttrVal" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="fieldDesc" column="AttrDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="attType" column="AttrType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="genInstrInd" column="GenInstrInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="reqInd" column="ReqdInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="chkboxReqdInd" column="chkboxReqdInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="recieptLocCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocNm" column="recieptLocNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrLvl" column="DELV_INSTR_LVL" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrId" column="DELV_INSTR_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	
+	</resultMap>
+	  		
+	<procedure id="spGetAssetLvlInstInfo" parameterMap="spGetAssetLvlInstInfoParam" resultMap="spGetAssetLvlInstInfoResult" >
+	 			{call AATA..sp_at_getRecvAcctDelvAttr(?,?,?)}
+	</procedure>
+<!-- END : Proc sp_at_getRecvAcctDelvAttr  -->
+
+
+<!-- START : Proc sp_at_getRecvAcctDelvAttr  -->
+	<parameterMap id="spGetAssetLvlInstAttInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetAssetLvlInstAttInfoResult" class="com.jpmchase.aata.services.to.AATAAssetLevelIstructionTO">
+	  			
+		<result property="recAccSeqNumber" column="RecvAccSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAssetSeqNo" column="RecvAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetType" column="AsetTypCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeDesc" column="AsetTypDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="attrId" column="AttrId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="fieldName" column="AttrNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="fieldValue" column="AttrVal" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="attType" column="AttrType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="genInstrInd" column="GenInstrInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="reqInd" column="AttReqdInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="chkboxReqdInd" column="chkboxReqdInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocCd" column="recieptLocCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recptLocNm" column="recieptLocNm" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrLvl" column="DELV_INSTR_LVL" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvInstrId" column="DELV_INSTR_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	  		
+	<procedure id="spGetAssetLvlInstAttInfo" parameterMap="spGetAssetLvlInstAttInfoParam" resultMap="spGetAssetLvlInstAttInfoResult" >
+	 			{call AATA..sp_at_getRecvAcctDelvAttr(?,?,?)}
+	</procedure>
+<!-- END : Proc sp_at_getRecvAcctDelvAttr  -->
+
+<!-- START :Iteration II Redesign -->
+
+	<!-- START : Proc sp_at_getNextRecvAcctSeqNum  -->
+
+	<parameterMap id="spGetRecAccountSeqNumParam" class="com.jpmchase.aata.services.to.AATAOmniAccountSearchTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="iProductCd" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+		<parameter property="iSubProductCd" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+		<parameter property="iOptionLvlCd" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetRecAccountSeqNumResult" class="com.jpmchase.aata.services.to.AATAOmniAccountSearchTO">
+	  			
+		<result property="recAccountId" column="NextReceivingAccountId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="allowStructureProduct" column="AllocationIndicator" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		
+	</resultMap>
+	  		
+	<procedure id="spGetRecAccountSeqNum" parameterMap="spGetRecAccountSeqNumParam" resultMap="spGetRecAccountSeqNumResult" >
+	 			{call AATA..sp_at_getNextRecvAcctSeqNum(?,?,?,?,?,?)}
+	</procedure>
+	
+	<!-- END : Proc sp_at_getNextRecvAcctSeqNum  -->
+	
+	<!-- START : Proc sp_delRecAccts -->
+	
+	<parameterMap id="spAATADelRecAccDtlsParam" class="com.jpmchase.aata.services.to.AATAOmniAccountSearchTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="iRecAccountId" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+	   	<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 	 
+	</parameterMap>
+  		
+	<procedure id="spAATADelRecAccDtls" parameterMap="spAATADelRecAccDtlsParam">
+  			{call AATA..sp_delRecAccts(?,?,?,?)}
+	</procedure>
+	
+	
+	<!-- END : Proc sp_delRecAccts -->
+	
+	<!-- START : Proc sp_delRecAssets  -->
+	
+	<statement id="spAATADelRecAssetDtls" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	 	IF OBJECT_ID ('##tmp_del_recv_asset') IS NOT NULL DROP TABLE ##tmp_del_recv_asset
+	
+	   	CREATE TABLE ##tmp_del_recv_asset
+		(
+		 RECV_ACC_SEQ_NUM INT NOT NULL, 
+		 RECV_ASET_SEQ_NUM INT NOT NULL,
+		 RECV_ASET_TYP_CD   VARCHAR(20) NOT NULL
+		)
+
+
+		<iterate property="recAssetDtlsSaveList"> 
+	  	 INSERT INTO ##tmp_del_recv_asset (
+	  	 	 RECV_ACC_SEQ_NUM,
+	  	 	 RECV_ASET_SEQ_NUM,
+	  	 	 RECV_ASET_TYP_CD
+	  	 )
+		 VALUES (
+		  	 #recAssetDtlsSaveList[].iRecAccountId:INTEGER#,		  	 
+			 #recAssetDtlsSaveList[].iRecAssetSeqNum:INTEGER#,
+			 #recAssetDtlsSaveList[].assetTypeCode:VARCHAR#
+			 
+		 )
+		</iterate> 
+	  
+	  	execute AATA..sp_delRecAssets #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#
+	  
+		</statement>
+		<update id="dropDelRecAssetDtls">IF OBJECT_ID ('##tmp_del_recv_asset') IS NOT NULL DROP TABLE ##tmp_del_recv_asset</update>  
+	
+	
+	<!-- END : Proc sp_delRecAssets  -->
+	
+	<!-- START : Proc sp_at_getCorporateAction  -->
+	<parameterMap id="spGetCorporateActionParam" class="java.util.HashMap">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />		
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="loginId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetCorporateActionResult" class="com.jpmchase.aata.services.to.AATACorpActionDtlsTO">
+	  			
+		<result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="delvAssetSeqNum" column="DelvAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="corpActionId" column="CorpActnId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="instrumentId" column="ImntId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="corpActionTypCd" column="CorpActnTypeCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="corpActionEvtTypCd" column="CorpActnEventTypCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dCorpActionEntryDt" column="CorpActnEntryDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="corpActionSeqNum" column="CorpActnSeqNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="corpActionStsCd" column="CorpActnStsCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="corpActionDescTx" column="CorpActnDescpTx" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dCorpActionExDt" column="CorpActnExDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionRecDt" column="CorpActnRecDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionPmtDt" column="CorpActnPmtDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionJpmDdlnDt" column="CorpActnJpmDeadlineDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionPblshDt" column="CorpActnPblshDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionMtgDt" column="CorpActnMtgDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionCallDt" column="CorpActnCallDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="dCorpActionCreDt" column="CorpActnCreDt" jdbcType="DATE" javaType="java.util.Date"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dKeyDt" column="KeyDt" jdbcType="DATE" javaType="java.util.Date"/>
+	</resultMap>
+	  		
+	<procedure id="spGetCorporateAction" parameterMap="spGetCorporateActionParam" resultMap="spGetCorporateActionResult" >
+	 			{call AATA..sp_at_getCorporateAction(?,?,?,?)}
+	</procedure>
+	<!-- END : Proc sp_at_getCorporateAction  -->  
+	
+	<!-- START : Proc sp_at_getApproverList  -->
+	<parameterMap id="spGetApproverListParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="approverType" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetApproverListResult" class="com.jpmchase.aata.services.to.ApproverTO">
+	  			
+		<result property="approverId" column="standardId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approverName" column="fullName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approverType" column="approvalCategory" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		
+	</resultMap>
+	  		
+	<procedure id="spGetApproverList" parameterMap="spGetApproverListParam" resultMap="spGetApproverListResult" >
+	 			{call AATA..sp_at_getApproverList(?,?,?,?)}
+	</procedure>
+<!-- END : Proc sp_at_getApproverList  -->
+	
+	
+	<!-- STRAT : Proc sp_at_getVerifyConfirm -->
+	<parameterMap id="spGetVerifyConfirmParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	</parameterMap>
+	
+		<resultMap id = "spAATAGetDelvAccountResult"  class="com.jpmchase.aata.services.to.AATAValidationTO">
+		<result property="accountNumber" column="init_acct_alt" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="initAccId" column="init_acc_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="delvAccountTitle" column="init_acc_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="totalMktValueDbl" column="total_market_value" jdbcType="Double" javaType="java.lang.Double" />
+		<result property="eci" column="init_eci" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="odsPartyId" column="init_ods_prty_id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="prodCode" column="prodCode" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="subProdCode" column="subProdCode" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="lobName" column="lob" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="defaultTaxLotMethod" column="dflt_tax_lot_method" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="defaultTaxLotCheckBoxVal" column="ovrride_tax_lot" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="lienIndFlag" column="lien_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="collateralInd" column="collateral_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="odiIndicator" column="odi_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="iraFlag" column="ira_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="fiduciaryFlag" column="fiduciaty_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="iobFlag" column="iob_ind" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+	</resultMap>
+	
+	
+	<resultMap id="spGetCallbackResult" class="com.jpmchase.aata.services.to.AATACallBckTO">
+		<result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="callBackMode" column="CallbackMode" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="tCollbackDate" column="ContactDate" jdbcType="DATETIME" javaType="java.sql.Timestamp"/>
+		<result property="name" column="ContactedBy" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="prsnCntact" column="PersonContacted" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="signature" column="SignatureVerified" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="callBackRequiredNA" column="CallbackReqdNA" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="inpersonGiftCallback" column="InPrsnGiftCallback" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="signatureRadio" column="SignatureRadio" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="phoneNumber" column="PhoneNo" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	
+	<resultMap id="spGetAddressGiftResult" class="com.jpmchase.aata.services.to.AATAGiftTO">
+
+  		<result property="caseId" column="CaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="childCaseId" column="ChildCaseId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousFlag" column="DonorAnonymousFlg" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorSalutation" column="DonorSalutation" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress1" column="DonorAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress2" column="DonorAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress3" column="DonorAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress4" column="DonorAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="donorAddress5" column="DonorAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>  		
+  		<result property="donorNote" column="DonorNote" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="signerName" column="SignerName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="signerTitle" column="SignerTitle" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="signerPhoneNo" column="SignerPhone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="doneeSalutation" column="DoneeSalutation" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress1" column="DoneeAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress2" column="DoneeAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress3" column="DoneeAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress4" column="DoneeAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeAddress5" column="DoneeAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeNote" column="DoneeNote" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneePhoneNo" column="DoneePhone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="donorName" column="DonorName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="doneeName" column="DoneeName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+  		<result property="anonymousDonorAddress1" column="AnonymousDonorAddLine1" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress2" column="AnonymousDonorAddLine2" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress3" column="AnonymousDonorAddLine3" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress4" column="AnonymousDonorAddLine4" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="anonymousDonorAddress5" column="AnonymousDonorAddLine5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+	</resultMap>
+	
+	<resultMap id="spAATAGetSettlementAssetResultVC" class="com.jpmchase.aata.services.to.AATAFreeReceiveSettlementTypeTO">
+  		
+		<result property="uniqueId" column="RecAsetSeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusipId" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="quantityId" column="Quantity" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="descriptionId" column="Description" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="settelmentId" column="SettlementType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="sedolId" column="Sedol" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="imntClssCd" column="ImntClassCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="isin" column="IsinCode" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticker" column="Ticker" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<procedure id="spGetVerifyConfirm" parameterMap="spGetVerifyConfirmParam" resultMap="spAATAGetTfrDetlResult, spAATAGetCheckResult, 
+		spGetRecAccInfoForSecurityResult, spAATAGetReceivingAssetResult, spAATAGetReceivingAssetTaxResult, spGetAccLvlInstInfoResult, 
+		spGetAssetLvlInstInfoResult,spAATAGetDelvAccountResult,spGetCorporateActionResult,spAATAGetTaxLotSelMethodParam,spGetCallbackResult,spGetApproverListResult,
+		spGetAddressGiftResult,spAATAGetSettlementAssetResultVC">
+		{call AATA..sp_at_getVerifyConfirm(?,?,?,?)}
+	</procedure>
+	<!-- END : Proc sp_at_getVerifyConfirm -->
+	
+<!-- END :Iteration II Redesign -->
+
+	<!-- Proc sp_at_saveCorporateAction Start -->
+  		
+  		<statement id="setReceivingAssetCorpActionDtls" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	  	IF OBJECT_ID ('##tmp_corporate_action') IS NOT NULL DROP TABLE ##tmp_corporate_action
+	  	
+	  	CREATE TABLE ##tmp_corporate_action
+		(
+		   	DELV_ASET_SEQ_NUM         INT         NOT NULL,
+		    CORP_ACTN_ID              INT         NOT NULL,
+		    IMNT_ID                   INT         NOT NULL,
+		    CORP_ACTN_TYPE_CD         CHAR(4)     NULL,
+		    CORP_ACTN_EVENT_TYP_CD    CHAR(1)     NULL,
+		    CORP_ACTN_ENTRY_DT        DATETIME    NULL,
+		    CORP_ACTN_SEQ_NO          INT         NULL,
+		    CORP_ACTN_STS_CD          CHAR(3)     NULL,
+		    CORP_ACTN_DESCP_TX        VARCHAR(40) NULL,
+		    CORP_ACTN_EX_DT           DATETIME    NULL,
+		    CORP_ACTN_REC_DT          DATETIME    NULL,
+		    CORP_ACTN_PMT_DT          DATETIME    NULL,
+		    CORP_ACTN_JPM_DEADLINE_DT DATETIME    NULL,
+		    CORP_ACTN_PBLSH_DT        DATETIME    NULL,
+		    CORP_ACTN_MTG_DT          DATETIME    NULL,
+		    CORP_ACTN_CALL_DT         DATETIME    NULL,
+		    CORP_ACTN_CRE_DT          DATETIME    NULL,
+		   	CUSIP                     VARCHAR(30) NULL
+		)
+                
+		<iterate property="receivingAccCorpActionDtlsSaveList"> 
+	  	 INSERT INTO ##tmp_corporate_action (
+	  	 	DELV_ASET_SEQ_NUM,
+		    CORP_ACTN_ID,
+		    IMNT_ID,
+		    CORP_ACTN_TYPE_CD,
+		    CORP_ACTN_EVENT_TYP_CD,
+		    CORP_ACTN_ENTRY_DT,
+		    CORP_ACTN_SEQ_NO,
+		    CORP_ACTN_STS_CD,
+		    CORP_ACTN_DESCP_TX,
+		    CORP_ACTN_EX_DT,
+		    CORP_ACTN_REC_DT,
+		    CORP_ACTN_PMT_DT,
+		    CORP_ACTN_JPM_DEADLINE_DT,
+		    CORP_ACTN_PBLSH_DT,
+		    CORP_ACTN_MTG_DT,
+		    CORP_ACTN_CALL_DT,
+		    CORP_ACTN_CRE_DT,
+		    CUSIP
+	  	 )
+		 VALUES (
+		 	 #receivingAccCorpActionDtlsSaveList[].delvAssetSeqNum:INTEGER#,
+			 #receivingAccCorpActionDtlsSaveList[].iCorpActionId:INTEGER#,
+			 #receivingAccCorpActionDtlsSaveList[].iInstrumentId:INTEGER#,
+			 #receivingAccCorpActionDtlsSaveList[].corpActionTypCd:CHAR#,
+			 #receivingAccCorpActionDtlsSaveList[].corpActionEvtTypCd:CHAR#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionEntryDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].icorpActionSeqNum:INTEGER#,	
+			 #receivingAccCorpActionDtlsSaveList[].corpActionStsCd:CHAR#,
+			 #receivingAccCorpActionDtlsSaveList[].corpActionDescTx:VARCHAR#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionExDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionRecDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionPmtDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionJpmDdlnDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionPblshDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionMtgDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionCallDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].dCorpActionCreDt:DATE#,
+			 #receivingAccCorpActionDtlsSaveList[].cusip:VARCHAR#
+		 )
+		</iterate> 
+	  
+	  	 execute AATA..sp_at_saveCorporateAction #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#,#loginId:VARCHAR#
+	  	 
+	  
+	</statement>
+	<update id="dropReceivingAssetCorpActionDetailsTable">IF OBJECT_ID ('##tmp_corporate_action') IS NOT NULL DROP TABLE ##tmp_corporate_action</update>
+  		
+  <!-- Proc sp_at_saveCorporateAction End -->
+  
+  <!-- START : Proc sp_at_getMasterRoute  -->
+	<parameterMap id="spGetMasterRouteParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetMasterRouteResult" class="com.jpmchase.aata.services.to.ApproverSelectionTO">
+	  			
+		<result property="sequenceNo" column="SeqNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approverType" column="ApproverType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="enabledFlag" column="EnabledFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approvingTeam" column="ApprovingTeam" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approverStatus" column="ApproverStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approvedDate" column="ApprovedDate" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedApproverId" column="ApproverSid" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="activityTypeCode" column="ActivityTypCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="apprvalCategDesc" column="ApprvlCategDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="approverTeamCode" column="TeamCd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="requiredFlag" column="RequiredFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	  		
+	<procedure id="spGetMasterRoute" parameterMap="spGetMasterRouteParam" resultMap="spGetMasterRouteResult" >
+	 			{call AATA..sp_at_getMasterRoute(?,?,?)}
+	</procedure>
+	<!-- END : Proc sp_at_getMasterRoute  -->
+
+
+	<!-- START : Proc sp_at_saveApprover  -->
+	
+	<statement id="spAATASaveApproverDtls" parameterClass="map">
+	  	SET CHAINED OFF
+	  	
+	 	IF OBJECT_ID ('##apprvrs') IS NOT NULL DROP TABLE ##apprvrs
+	
+	   	CREATE TABLE ##apprvrs
+		(
+		 	APPRVL_CATEG    VARCHAR(10) NULL,
+    		APPRVR_SID      VARCHAR(10) NULL
+		)
+
+		<iterate property="approverTOList"> 
+	  	 INSERT INTO ##apprvrs (
+	  	 	 APPRVL_CATEG,
+	  	 	 APPRVR_SID
+	  	 )
+		 VALUES (
+		  	 #approverTOList[].approverType:VARCHAR#,		  	 
+			 #approverTOList[].approverId:VARCHAR#
+			 
+		 )
+		</iterate> 
+	  
+	  	execute AATA..sp_at_saveApprover #caseId:VARCHAR#,#errorCode:INTEGER#,#errorMsg:VARCHAR#
+	  
+		</statement>
+		<update id="dropApproverDtls">IF OBJECT_ID ('##apprvrs') IS NOT NULL DROP TABLE ##apprvrs</update>  
+	
+	
+	<!-- END : Proc sp_at_saveApprover  -->
+	
+	<!-- START : Proc sp_at_getHelpText  -->
+	<parameterMap id="spGetHelpTextListParam" class="com.jpmchase.aata.services.to.AATAHelpTextTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="iTabId" jdbcType="INTEGER" javaType="java.lang.Integer" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	  	
+	<resultMap id="spGetHelpTextResult" class="com.jpmchase.aata.services.to.AATAHelpTextTO">
+	  			
+		<result property="iSeqNo" column="SeqNo" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="iTabId" column="TabId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="tabName" column="TabName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="helpText" column="HelpText" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="displayType" column="DisplayTyp" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		
+		
+	</resultMap>
+	  		
+	<procedure id="spGetHelpText" parameterMap="spGetHelpTextListParam" resultMap="spGetHelpTextResult" >
+	 			{call AATA..sp_at_getHelpText(?,?,?,?)}
+	</procedure>
+	<!-- END : Proc sp_at_getHelpText  -->  
+
+	<!-- START : Proc sp_at_getAssetImnt -->
+	
+	<parameterMap id="spGetAssetInfoParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+		 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+		   		 
+	</parameterMap>
+	
+	
+	<resultMap id="spGetAssetInfoResult" class="com.jpmchase.aata.services.to.AATAReceiveAssetTO">
+	  			
+		<result property="assetType" column="ASET_TYP_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeDesc" column="ASET_TYP_DESC" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		
+		
+	</resultMap>
+	  		
+	<procedure id="spGetAssetInfo" parameterMap="spGetAssetInfoParam" resultMap="spGetAssetInfoResult" >
+	 			{call AATA..sp_at_getAssetImnt(?,?,?)}
+	</procedure>
+	
+	<!-- END : Proc sp_at_getAssetImnt -->
+	
+	<!-- Proc-  sp_at_saveCallbackDtls  starts -->
+	<parameterMap id="setCallBackDetailsParam" class="com.jpmchase.aata.services.to.AATACallBckTO">
+		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="callBackMode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+	  	<parameter property="tCollbackDate" jdbcType="DATETIME" javaType="java.sql.Timestamp" mode="IN"/>
+		<parameter property="name" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="prsnCntact" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="signature" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="callBackRequiredNA" jdbcType="VARCHAR" javaType="java.lang.String"  mode="IN"/>
+		<parameter property="inpersonGiftCallback" jdbcType="VARCHAR" javaType="java.lang.String"  mode="IN"/>
+		<parameter property="signatureRadio" jdbcType="VARCHAR" javaType="java.lang.String"  mode="IN"/>
+		<parameter property="phoneNumber" jdbcType="VARCHAR" javaType="java.lang.String"  mode="IN"/>
+	   		 
+	</parameterMap>
+  		
+	<procedure id="setCallBackDetails" parameterMap="setCallBackDetailsParam" >
+  			{call AATA..sp_at_saveCallbackDtls(?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+		
+	<!-- Proc-  sp_at_saveCallbackDtls  ends -->
+	
+	<!-- START : Proc sp_at_getDelvInsDatatype  -->
+	
+	<resultMap id="spGetDelvInstrDataTypeResult" class="com.jpmchase.aata.services.to.AATAAssetLevelIstructionTO">
+		<result property="attrId" column="ATTR_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dataType" column="DATA_TYPE" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<procedure id="spGetDelvInstrDataType"  resultMap="spGetDelvInstrDataTypeResult" >
+	 			{call AATA..sp_at_getDelvInsDatatype()}
+	</procedure>
+	<!-- END : Proc sp_at_getDelvInsDatatype -->
+	
+	<!-- Proc  sp_at_getRecvMap starts-->
+  		
+  	
+	<resultMap id="spAATAGetRecvMapResult" class="com.jpmchase.aata.services.to.AATAAssetTransferDtlsTO">
+
+		<result property="selectedSettlementType" column="IntExtGiftMarginInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedTransferType" column="TransferType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="selectedAssetSelection" column="FullPartialInd" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="giftOptionFlag" column="Gifttype" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recvAcctType" column="RecvAcctType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+
+	</resultMap>
+  		
+	<procedure id="spAATAGetRecvMap" resultMap="spAATAGetRecvMapResult" >
+  			{call AATA..sp_at_getRecvMap()}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getRecvMap  ends-->
+  		
+	<!-- Proc  sp_at_getSettlementType starts-->
+  		
+  	
+	<resultMap id="spAATAGetSettelmentTypeResult" class="com.jpmchase.aata.services.to.GenReqSettelmentTypeTO">
+
+		<result property="giftFlag" column="GIFT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="deliveryAccount" column="INITIATING_ACCOUNT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="receivingAccount" column="RECEIVING_ACCOUNT" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="settlementType" column="SETTLEMENT_TYPE" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="settlementTypeDB" column="DB_FIELD_VALUE" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetSelection" column="ASSET_SELECTION" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="giftType" column="GIFT_TYPE" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="transferType" column="TRANSFER_TYPE" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticketType" column="TCKT_TYP" jdbcType="VARCHAR" javaType="java.lang.String"/>
+
+	</resultMap>
+  		
+	<procedure id="getSettelmentType" resultMap="spAATAGetSettelmentTypeResult" >
+  			{call AATA..sp_at_getSettlementType()}
+	</procedure>
+  		
+	<!-- Proc  sp_at_getSettlementType  ends-->
+	
+	<!-- Proc sp_at_getFRRecvAsset  starts-->
+  		
+	<parameterMap id="spAATAGetSettlementAssetFR" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetSettlementAssetResultFR" class="com.jpmchase.aata.services.to.AATAReceiveAssetTO">
+  		<result property="recAccSeqNumber" column="RecAcctSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAssetSeqNo" column="RecAsetSeqNum" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="recAccNumber" column="RecvAltAccId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recAccName" column="RecvAccName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusip" column="Cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetType" column="SettlementType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetTypeDesc" column="AsetTypDesc" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  	
+	<procedure id="getSettlementAssetDetailsFR" parameterMap="spAATAGetSettlementAssetFR" resultMap="spAATAGetSettlementAssetResultFR" >
+  			{call AATA..sp_at_getFRRecvAsset(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getFRRecvAsset   ends-->
+	
+	<!-- Proc-  sp_at_setRsdlInd  starts -->
+	<parameterMap id="setTurnOffResidualParam" class="com.jpmchase.aata.services.to.AATAValidationTO">
+		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="rsdlInd" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="loginUid" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<procedure id="setTurnOffResidual" parameterMap="setTurnOffResidualParam" >
+  			{call AATA..sp_at_setRsdlInd(?,?,?,?,?)}
+	</procedure>
+		
+	<!-- Proc-  sp_at_setRsdlInd  ends -->
+	
+	<!-- Proc  sp_at_getCrdtGtwayAttr  starts -->
+	<parameterMap id="getCrdtGtwayAttrParam" class="java.util.HashMap">
+		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  	
+  	<resultMap id = "getCrdtGtwayAttrResult"  class="com.jpmchase.aata.services.to.AATACGEWServiceTO">
+		<result property="caseId" column="AT_CASE_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="requesterSid" column="INIT_BY" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="debitAccNo" column="INIT_ALT_ACC_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="settlementType" column="INT_EXT_IND" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<result property="assetSelection" column="FULL_PARTIAL_IND" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dTktInitDate" column="INIT_TS" jdbcType="DATETIME" javaType="java.util.Date"/>
+		<result property="creditExcpApprovalFlag" column="CRDT_EXCP_APRVL_FLG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="gwmCreditFlag" column="GWM_CRDT_CMT_FLG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="parentTktUrl" column="PRNT_TKT_URL" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dTotalTransAmtUSD" column="TOT_MKT_VAL" jdbcType="Double" javaType="java.lang.Double"/>
+		<result property="debitAccBusSysCode" column="DBT_ACCT_BUSSYS_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="acctClsFlg" column="ACCT_CLS_FLG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="creditExcptnWfCaseId" column="CRDT_CHILD_CASE_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticketType" column="TCKT_TYP" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<resultMap id = "getCrdtGtwayCusipResult"  class="com.jpmchase.aata.services.to.AATAAssetDtlsTO">
+		<result property="cusip" column="CUSIP" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="dQuantity" column="QTY" jdbcType="Double" javaType="java.lang.Double"/>
+	</resultMap>
+	
+	<resultMap id = "getCrdtGtwayRecAccResult"  class="com.jpmchase.aata.services.to.AATAReceiveAccountTO">
+		<result property="recAccNumber" column="RECV_ALT_ACC_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="wfBusinessSystemCode" column="CRDT_ACCT_BUSSYS_CD" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+  		
+	<procedure id="getCrdtGtwayAttr" parameterMap="getCrdtGtwayAttrParam" resultMap="getCrdtGtwayAttrResult, getCrdtGtwayCusipResult, getCrdtGtwayRecAccResult" >
+  			{call AATA..sp_at_getCrdtGtwayAttr(?,?,?)}
+	</procedure>
+	<!-- Proc  sp_at_getCrdtGtwayAttr  ends -->
+	
+	<!-- Proc sp_at_saveCrdtFlgs starts -->
+	<parameterMap id="saveCreditFlagsParam" class="com.jpmchase.aata.services.to.AATACallBckTO">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="crdtExcpApprFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="gwmCrdtCommFlag" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="saveCreditFlags" parameterMap="saveCreditFlagsParam" >
+		{call AATA..sp_at_saveCrdtFlgs(?,?,?,?,?)}
+	</procedure>
+	<!-- Proc sp_at_saveCrdtFlgs ends -->
+	
+	<!-- Proc sp_at_getCrdtGtWayCallStatus starts -->
+	<parameterMap id="getCrdtGtWayCallStatusParam" class="java.util.HashMap">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="actionTaken" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	
+	<resultMap id = "getCrdtGtWayCallStatusResult"  class="com.jpmchase.aata.services.to.AATACGEWServiceTO">
+		<result property="creditCallFlag" column="CreditCallFlag" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<procedure id="getCrdtGtWayCallStatus" parameterMap="getCrdtGtWayCallStatusParam" resultMap="getCrdtGtWayCallStatusResult">
+		{call AATA..sp_at_getCreditGtWayCallStatus(?,?,?,?)}
+	</procedure>	
+	<!-- Proc sp_at_getCrdtGtWayCallStatus ends -->
+	
+	<!-- Proc sp_at_LogCrdtGWCall starts -->
+	<parameterMap id="spLogCrdtGWCallParam" class="java.util.HashMap">
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="cgwResponse" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="spLogCrdtGWCall" parameterMap="spLogCrdtGWCallParam" >
+		{call AATA..sp_at_LogCrdtGWCall(?,?,?,?)}
+	</procedure>
+	<!-- Proc sp_at_LogCrdtGWCall ends -->
+	
+</sqlMap>

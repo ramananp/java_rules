@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "sql-map-2.dtd">
+<sqlMap namespace="AATAStatus">
+
+<!-- Proc  sp_at_getStatus starts-->
+  		
+	<parameterMap id="spAATAGetStatusParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spAATAGetStatusResult" class="com.jpmchase.aata.services.to.AATAStatusTO">
+  		
+		<result property="recAccountNo" column="AcctNum" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="stpType" column="stptyp" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="cusip" column="cusip" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticker" column="ticker" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="description" column="description" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="quantity" column="qty" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="marketValue" column="mktValue" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="sla" column="SLA" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ren" column="REN" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetStatus" column="assetStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="assetFinalStatus" column="assetFinalStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticketNumber" column="childTicketNumber" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="ticketType" column="childTicketType" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="currentOwner" column="childTicketOwner" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="currentTeam" column="childTicketOwnerTeam" jdbcType="VARCHAR" javaType="java.lang.String"/>	
+		<result property="ticketStatus" column="childTicketStatus" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="hierId" column="hierId" jdbcType="VARCHAR" javaType="java.lang.String"/>		
+  		
+	</resultMap>
+  	
+	<procedure id="spGetStatus" parameterMap="spAATAGetStatusParam" resultMap="spAATAGetStatusResult" >
+  			{call AATA..sp_at_getStatus(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getStatus  ends-->
+	
+	<!-- Proc  sp_at_getSSSTDetails starts-->
+  		
+	<parameterMap id="spGetSanctionStatusParam" class="com.jpmchase.aata.services.to.AATAAssetTransferWrapperTO">
+	 		
+		<parameter property="caseId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" /> 
+	   		 
+	</parameterMap>
+  		
+	<resultMap id="spGetSanctionStatusResult" class="com.jpmchase.aata.services.to.AATAStatusTO">
+	
+		<result property="recAccountNo" column="RECV_ALT_ACC_ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="recvAccName" column="RECV_ACC_NAME" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		<result property="ssStatus" column="STATUS_MSG" jdbcType="VARCHAR" javaType="java.lang.String"/>
+  		
+	</resultMap>
+  	
+	<procedure id="spGetSanctionStatus" parameterMap="spGetSanctionStatusParam" resultMap="spGetSanctionStatusResult" >
+  			{call AATA..sp_at_getFSresponse(?,?,?)}
+	</procedure>
+  		
+  		
+	<!-- Proc  sp_at_getSSSTDetails  ends-->
+
+
+
+</sqlMap>

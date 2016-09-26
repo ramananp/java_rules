@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       
+	<bean id="template" class="com.jpmchase.aata.services.dao.BaseDAO">
+        	  <property name="sqlMapClient">
+           		 <ref bean="sqlMapClient"/>
+        </property>      
+    </bean>
+    <bean id="templateOL" class="com.jpmchase.aata.services.dao.BaseDAO">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClientOL"/>
+		</property>      
+	</bean>
+	
+     <bean id="aataDAO" class="com.jpmchase.aata.services.dao.AutoAccTransferDAOImpl">
+    	<property name="template">
+            <ref local="template"/>
+        </property>
+        <property name="templateOL">
+			<ref local="templateOL"/>
+		</property>
+    </bean>
+       
+</beans>       

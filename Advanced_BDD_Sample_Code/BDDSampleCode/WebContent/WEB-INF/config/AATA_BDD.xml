@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "sql-map-2.dtd">
+<sqlMap namespace="AATA_BDD">
+	
+	<!-- Proc sp_at_delTestTickets starts -->
+	<parameterMap id="sp_at_delTestTicketsParam" class="java.util.HashMap">
+		<parameter property="initAccAltId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="initUser" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN" />
+		<parameter property="errorCode" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT" /> 
+		<parameter property="errorMessage" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="sp_at_delTestTickets" parameterMap="sp_at_delTestTicketsParam" >
+		{call AATA..sp_at_delTestTickets(?,?,?,?)}
+	</procedure>
+	<!-- Proc sp_at_delTestTickets ends -->
+	
+</sqlMap>

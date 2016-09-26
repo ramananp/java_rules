@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+     
+    	
+	<bean id="commentsBO" class="com.jpmchase.aata.services.bo.AATACommentsBO">
+        	
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+        	
+	</bean>
+    	
+    	    	
+	<bean id="attachmentBO" class="com.jpmchase.aata.services.bo.AATAAttachmentBO">
+        	
+		<property name="citadelUtility">
+			<ref bean="citadelUtility"/>
+		</property>
+        	
+	</bean>
+    	
+	<bean id="pickListUtility" class="com.jpmchase.aata.services.utils.AATAPickListUtil">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+			
+	</bean> 
+	<bean id="workFlowBO" class="com.jpmchase.aata.services.bo.AATAWorkFlowBO">
+		<property name="workflowUtility">
+			<ref bean="workflowUtility"/>
+		</property>
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+	</bean>  
+	<bean id="aataFreeDeliveryBO" class="com.jpmchase.aata.services.bo.AATAFreeDeliveryBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+	</bean>
+	<bean id="aataStandardBO" class="com.jpmchase.aata.services.bo.AATAStandardBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+		<property name="workflowUtility">
+			<ref bean="workflowUtility"/>
+		</property>
+		<property name="pickListUtility">
+            <ref bean="pickListUtility"/>
+        </property>
+	</bean>
+	<bean id="aataFreeReceiveBO" class="com.jpmchase.aata.services.bo.AATAFreeReceiveBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+	</bean>
+	<bean id="aataGiftBO" class="com.jpmchase.aata.services.bo.AATAGiftBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+	</bean>
+	<bean id="aataStatusBO" class="com.jpmchase.aata.services.bo.AATAStatusBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+	</bean>
+		<bean id="aataSanctionBO" class="com.jpmchase.aata.services.bo.AATASanctionBO">
+		<property name="aataDAO">
+			<ref bean="aataDAO"/>
+		</property>
+		<property name="aataMiddlewareUtility">
+			<ref bean="aataMiddlewareUtility"/>
+		</property>
+	</bean>
+</beans>       

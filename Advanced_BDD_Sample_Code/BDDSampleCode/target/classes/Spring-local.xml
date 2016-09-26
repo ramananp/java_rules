@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-lazy-init="true">
+           	
+    	<!-- This configuration defines everything per Environment, per Region -->
+
+		<!-- First two are mandatory for ALL apps to define region and env, other are optional examples	-->
+
+			<bean id="appConfig" class="com.jpmchase.aata.services.rest.spring.AATAConfiguration"
+			init-method="init">
+			<property name="environmentCode" value="DEV" /> <!-- LOCAL/DEV/UAT/SIT/PERF/PROD -->
+			<property name="regionCode" value="PBA" /> <!-- PBA or IPB -->
+			<property name="mailHost" value="mailhost.jpmchase.net" />
+			<property name="mailPort" value="25" />
+			<property name="wsodURL" value="http://wsod.fake.url.com" />
+			<property name="ssoHeaderName" value="sm_user"/>
+			<property name="ssoHeaderFName" value="FIRSTNAME"/>
+			<property name="ssoHeaderLName" value="LASTNAME"/>
+		</bean>
+	
+		<bean id="staticResourceVersionSource" class="com.jpmorgan.pb.rest.view.internal.RandomVersionSource" />
+	
+		<util:list id="aataCSSIncludes">
+			<value>/extjs/current/resources/css/ext-all.css</value>
+			<value>/extjs/current/resources/css/xtheme-pb1.css</value>
+			<value>/secure/ui/aata/aataUI/css/AATA.css</value>
+			<value>/secure/ui/aata/aataUI/css/fileuploadfield.css</value>
+		</util:list>
+		
+		<util:list id="aataJSIncludes">
+			<value>/secure/ui/aata/aataUI/compressjs/aatauicentral-debug.js</value>
+		</util:list>
+		
+       <import resource="classpath:Spring-common.xml"/> 
+</beans>       
