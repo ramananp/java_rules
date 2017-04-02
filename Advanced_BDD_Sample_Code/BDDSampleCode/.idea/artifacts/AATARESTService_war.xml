@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="AATARESTService:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="AATARESTService.war">
-      <element id="artifact" artifact-name="AATARESTService:war exploded" />
-    </root>
-  </artifact>
-</component>
